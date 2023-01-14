@@ -1,7 +1,12 @@
+import useSWR from 'swr'
 import React from 'react'
 import styled from 'styled-components'
+import {Text} from 'styles/Text'
 
 import { Card } from 'components/Card'
+import { useAuth, useERC20Balance } from 'hooks'
+import { CINU } from "utils/env-vars"
+
 
 const Footnote = styled.div`
   font-size: 14px;
@@ -23,12 +28,32 @@ const StyledWrapper = styled.div`
     align-items: stretch;
   }
 `
+function GetCINUBalance() {
+  const {address} = useAuth()
+  const tokenBalance = useERC20Balance(address, CINU)
+
+  if (tokenBalance.balance !== undefined) {
+    return (
+      <div>
+        Balance: {(tokenBalance.balance)}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        Please connect wallet...
+      </div>
+    )
+  }
+
+  
+}
 
 export function Balances() {
   return(
     <StyledWrapper>
       <Card>
-
+        <GetCINUBalance/>
       </Card>
       <Footnote>
         Initial Total Supply
