@@ -1,6 +1,6 @@
 import { black, green, grey, red, white } from './colors'
 
-export const theme = {
+export const defaultTheme = {
   borderRadius: 12,
   breakpoints: {
     mobile: 400,

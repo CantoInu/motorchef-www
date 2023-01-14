@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Container from 'components/Container'
+import { Container } from 'components/Container'
 
 interface PageHeaderProps {
   icon: React.ReactNode

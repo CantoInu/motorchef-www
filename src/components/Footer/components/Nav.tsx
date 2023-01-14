@@ -16,7 +16,7 @@ const StyledLink = styled.a`
   }
 `
 
-export default function Nav() {
+export function Nav() {
   return (
     <StyledNav>
       <StyledLink

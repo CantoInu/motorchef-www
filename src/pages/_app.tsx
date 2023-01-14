@@ -8,7 +8,7 @@ import { publicProvider } from "wagmi/providers/public"
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 
 import { ThemeProvider } from "styled-components"
-import { theme } from "theme"
+import { defaultTheme } from "theme"
 
 const cantoChain: Chain = {
 	id: 7_700,
@@ -49,11 +49,11 @@ const wagmiClient = createClient({
 	provider,
 })
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={defaultTheme}>
           <Component {...pageProps} />
         </ThemeProvider>
       </RainbowKitProvider>
@@ -61,4 +61,3 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;

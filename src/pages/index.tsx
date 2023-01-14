@@ -8,17 +8,20 @@ import icon from 'assets/icon.png'
 import {Page} from "components/Page"
 import {PageHeader} from "components/PageHeader"
 import Image from "next/image"
+import {Container} from 'components/Container';
+import {Balances} from 'components/Balances';
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <Page>
       <PageHeader
-        icon={<Image src={icon} />}
+        icon={<Image src={icon} height={240} width={240} />}
         title="MotorChef is Ready"
         subtitle="Stake Forteswap LP tokens to farm your share of WCANTO!"
       />
+      <Container>
+        <Balances/>
+      </Container>
     </Page>
   );
 };
-
-export default Home;

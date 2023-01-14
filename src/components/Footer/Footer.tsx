@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Nav from './components/Nav'
+import {Nav} from './components/Nav'
 
 const StyledFooter = styled.footer`
   align-items: center;
