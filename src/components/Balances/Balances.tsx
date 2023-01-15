@@ -34,15 +34,15 @@ function GetCINUBalance() {
 
   if (tokenBalance.balance !== undefined) {
     return (
-      <div>
+      <Text>
         Balance: {(tokenBalance.balance)}
-      </div>
+      </Text>
     )
   } else {
     return (
-      <div>
+      <Text>
         Please connect wallet...
-      </div>
+      </Text>
     )
   }
 

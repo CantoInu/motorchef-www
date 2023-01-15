@@ -25,3 +25,5 @@ export default function Home() {
     </Page>
   );
 };
+
+// issue with formatting comes leaving the container under the header
