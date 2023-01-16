@@ -1,8 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import styled from 'styled-components'
 import icon from 'assets/icon.png'
 
 import {Page} from "components/Page"

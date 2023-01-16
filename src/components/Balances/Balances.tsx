@@ -1,7 +1,6 @@
-import type { ReactChildren } from "types"
-import React, { ReactElement, useEffect, useState } from 'react'
+
+import React, { ReactElement, useState } from 'react'
 import styled from 'styled-components'
-import {Text} from 'styles'
 
 import { Card } from 'components/Card'
 import { useAuth, useCINUBalance } from 'hooks'
@@ -12,7 +11,6 @@ import { Value } from 'components/Value'
 import { Label } from 'components/Label'
 import { formatCryptoVal } from "utils"
 import { usePendingMotorChefRewards, useStakedBalance } from "hooks/useMotorChef"
-import CountUp from "react-countup/build/CountUp"
 
 
 const Footnote = styled.div`
@@ -82,7 +80,7 @@ export function Balances() {
               <div style={{ flex: 1 }}>
                 <Label text="Your Staked LP Balance" />
                 <Value
-                  value={!!connectedAddress ? formatCryptoVal(userStakedBalance!) : 'Locked'}
+                  value={connectedAddress && userStakedBalance.amount ? formatCryptoVal(userStakedBalance.amount) : 'Locked'}
                 />
               </div>
             </StyledBalance>
@@ -105,7 +103,7 @@ export function Balances() {
               <div style={{ flex: 1 }}>
                 <Label text="Your CINU Balance" />
                 <Value
-                  value={!!connectedAddress ? formatCryptoVal(userBalance!) : 'Locked'}
+                  value={connectedAddress && userBalance ? formatCryptoVal(userBalance) : 'Locked'}
                 />
               </div>
             </StyledBalance>
