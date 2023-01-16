@@ -1,5 +1,4 @@
-import useSWR from 'swr'
-import { useBalance as useWagmiBalance, useAccount, useContractRead, erc20ABI, Address } from 'wagmi'
+import { useBalance as useWagmiBalance, useAccount, Address } from 'wagmi'
 
 import { CINU } from 'utils/env-vars'
 

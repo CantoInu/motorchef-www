@@ -77,6 +77,8 @@ const ONE_HUNDRED = new BigNumber(100)
 const TEN = new BigNumber(10)
 const ONE = new BigNumber(1)
 const ONE_MILLIONTH = new BigNumber(0.000001)
+const ONE_BILLIONTH = new BigNumber(0.000000001)
+const ONE_TRILLIONTH = new BigNumber(0.000000001)
 
 function formatCryptoValUnder100K(amount: BigNumber) {
 	const formattedVal = amount.isInteger()
@@ -92,8 +94,12 @@ function formatCryptoValUnder100K(amount: BigNumber) {
 						: amount.isGreaterThan(ONE)
 							? amount.precision(6).decimalPlaces(5)
 							: amount.isGreaterThanOrEqualTo(ONE_MILLIONTH)
-								? amount.precision(6).decimalPlaces(6)
-								: `<${ONE_MILLIONTH}` // otherwise we"ll get output like "1e-18"
+								? amount.precision(3).decimalPlaces(6)
+								: amount.isGreaterThanOrEqualTo(ONE_BILLIONTH)
+									? amount.precision(3).decimalPlaces(7)
+									: amount.isGreaterThanOrEqualTo(ONE_TRILLIONTH)
+										? amount.precision(3).decimalPlaces(8)
+										:`<${ONE_TRILLIONTH}` // otherwise we"ll get output like "1e-18"
 	return formattedVal.toString()
 }
 

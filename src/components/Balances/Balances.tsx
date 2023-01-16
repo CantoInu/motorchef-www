@@ -1,5 +1,5 @@
 import type { ReactChildren } from "types"
-import React from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {Text} from 'styles'
 
@@ -11,6 +11,8 @@ import { Spacer } from 'components/Spacer'
 import { Value } from 'components/Value'
 import { Label } from 'components/Label'
 import { formatCryptoVal } from "utils"
+import { usePendingMotorChefRewards, useStakedBalance } from "hooks/useMotorChef"
+import CountUp from "react-countup/build/CountUp"
 
 
 const Footnote = styled.div`
@@ -44,14 +46,56 @@ const StyledBalance = styled.div`
   flex: 1;
 `
 
+const PendingRewards = (): ReactElement => {
+  const pending = usePendingMotorChefRewards()
+  const [scale] = useState(1)
+
+  return (
+    <span
+      style={{
+        transform: `scale(${scale})`,
+        transformOrigin: 'right bottom',
+        transition: 'transform 0.5s',
+        display: 'inline-block',
+      }}
+    >
+    {!!pending ? formatCryptoVal(pending) : 'Locked'}
+    </span>
+  )
+}
+
 export function Balances() {
 
   const { address: connectedAddress = "" } = useAuth()
 
   const userBalance = useCINUBalance()
+  const userStakedBalance = useStakedBalance()
 
   return(
     <StyledWrapper>
+      <Card>
+        <CardContent>
+          <StyledBalances>
+            <StyledBalance>
+              <DogIcon />
+              <Spacer />
+              <div style={{ flex: 1 }}>
+                <Label text="Your Staked LP Balance" />
+                <Value
+                  value={!!connectedAddress ? formatCryptoVal(userStakedBalance!) : 'Locked'}
+                />
+              </div>
+            </StyledBalance>
+          </StyledBalances>
+        </CardContent>
+        <Footnote>
+          <PendingRewards/> Pending harvest
+          <FootnoteValue>
+             WCANTO
+          </FootnoteValue>
+        </Footnote>
+      </Card>
+      <Spacer />
       <Card>
         <CardContent>
           <StyledBalances>
@@ -69,7 +113,7 @@ export function Balances() {
         </CardContent>
         <Footnote>
           Initial Total Supply
-          <FootnoteValue>1,000,000,000,000,000 cINU</FootnoteValue>
+          <FootnoteValue>1 Quadrillion cINU</FootnoteValue>
         </Footnote>
       </Card>
     </StyledWrapper>
