@@ -57,8 +57,8 @@ export function Button({
       break
     case 'md':
     default:
-      boxShadow = `6px 6px 12px ${color.grey[300]},
-        -12px -12px 24px -2px ${color.grey[100]}ff;`
+      boxShadow = `6px 6px 12px ${color.grey[400]},
+        -9px -9px 24px -2px ${color.grey[300]}ff;`
       buttonPadding = spacing[4]
       buttonSize = 56
       fontSize = 16
