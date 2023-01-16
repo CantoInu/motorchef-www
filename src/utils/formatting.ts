@@ -82,7 +82,7 @@ const ONE_TRILLIONTH = new BigNumber(0.000000001)
 
 function formatCryptoValUnder100K(amount: BigNumber) {
 	const formattedVal = amount.isInteger()
-		? amount.toFormat(0)
+		? amount.toFormat(4)
 		: amount.isGreaterThan(TEN_THOUSAND)
 			? amount.precision(7).decimalPlaces(2).toFormat()
 			: amount.isGreaterThan(ONE_THOUSAND)
