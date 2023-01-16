@@ -5,7 +5,7 @@ import {Text} from 'styles'
 import { useBalance } from 'wagmi'
 
 import { Card } from 'components/Card'
-import { useAuth, useERC20Balance } from 'hooks'
+import { useAuth, useCINUBalance } from 'hooks'
 import { CINU } from "utils/env-vars"
 import { connect } from 'http2'
 
@@ -30,49 +30,19 @@ const StyledWrapper = styled.div`
     align-items: stretch;
   }
 `
-const GetCINUBalance = ({ address }: { address: string | undefined }) => {
-  const formedAddress: `0x${string}` = `0x${address}`
-  
-  const { data, isError, isLoading } = useBalance({
-    address: formedAddress,
-    token: `0x${CINU}`,
-    chainId: 7700,
-  });
-
-  if (isLoading) return <div>Fetching balance…</div>;
-  if (isError) return <div>Error fetching balance</div>;
-  return (
-    <div data-cy='wagmi-balance'>
-      <h2>useBalance</h2>
-      wagmi balance: {data?.formatted} {data?.symbol}
-    </div>
-  );
-};
-
-const UserCinuBalance = () => {
-  const { address: connectedAddress = "" } = useAuth()
-  
-  const balance = <GetCINUBalance address={connectedAddress}/>
-
-  return (
-    balance
-  )
-}
 
 export function Balances() {
 
   const { address: connectedAddress = "" } = useAuth()
 
-  if (!connectedAddress) return (
-			<Text>Connect your wallet to view your profile</Text>
-	)
-
-
+  const balance = useCINUBalance()
 
   return(
     <StyledWrapper>
       <Card>
-        <UserCinuBalance/>
+        {connectedAddress && (
+          <Text>{balance}</Text>
+        )}
       </Card>
       <Footnote>
         Initial Total Supply

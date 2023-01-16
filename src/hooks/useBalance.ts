@@ -1,20 +1,17 @@
 import useSWR from 'swr'
-import { useBalance as useWagmiBalance } from 'wagmi'
+import { useBalance as useWagmiBalance, useAccount, useContractRead, erc20ABI, Address } from 'wagmi'
 
-export function useERC20Balance(walletAddress: string | undefined, tokenAddress: string): { balance: number} {
+import { CINU } from 'utils/env-vars'
+
+export function useCINUBalance() {
   
+  const { address: userAddress } = useAccount();
 
-    const { data: balance, isError, isSuccess } = useWagmiBalance({
-        address: `0x${walletAddress}`,
-        token: `0x${tokenAddress}`,
-        enabled: true,
-        watch: true
-      })
+  const { data, isError, isLoading, error } = useWagmiBalance({
+      address: userAddress!,
+      token: CINU as Address,
+  });
 
-    console.log(`balance: ${balance?.value}`)
-    
 
-	return {
-		balance: balance?.value ? parseFloat(balance?.formatted) : 0
-	}
+  return `Balance: ${data?.formatted} ${data?.symbol}`
 }
