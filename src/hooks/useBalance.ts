@@ -13,5 +13,5 @@ export function useCINUBalance() {
   });
 
 
-  return `Balance: ${data?.formatted} ${data?.symbol}`
+  return data?.value || undefined
 }

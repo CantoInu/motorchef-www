@@ -5,6 +5,8 @@ import { NETWORK_RPC_URL } from "./env-vars"
 import { basicConversionTable } from "../constants"
 
 export * from "./formatting"
+export * from "./formatBalance"
+
 
 export const defaultProvider = new ethers.providers.JsonRpcProvider(NETWORK_RPC_URL)
 

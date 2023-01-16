@@ -41,10 +41,6 @@ export declare enum ChainId {
     CANTO = 7700
 }
 
-export const EIP_1559_ACTIVATION_BLOCK: { [chainId in ChainId]?: number } = {
-	[ChainId.CANTO]: 1,
-}
-
 export const DEFAULT_TXN_DISMISS_MS = 25000
 
 export const IS_IN_IFRAME = typeof window !== "undefined" && window.parent !== window

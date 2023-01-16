@@ -1,13 +1,16 @@
-import useSWR from 'swr'
+import type { ReactChildren } from "types"
 import React from 'react'
 import styled from 'styled-components'
 import {Text} from 'styles'
-import { useBalance } from 'wagmi'
 
 import { Card } from 'components/Card'
 import { useAuth, useCINUBalance } from 'hooks'
-import { CINU } from "utils/env-vars"
-import { connect } from 'http2'
+import CardContent from 'components/CardContent/CardContent'
+import { DogIcon } from 'components/DogIcon/DogIcon'
+import { Spacer } from 'components/Spacer'
+import { Value } from 'components/Value'
+import { Label } from 'components/Label'
+import { formatCryptoVal } from "utils"
 
 
 const Footnote = styled.div`
@@ -31,23 +34,44 @@ const StyledWrapper = styled.div`
   }
 `
 
+const StyledBalances = styled.div`
+  display: flex;
+`
+
+const StyledBalance = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+`
+
 export function Balances() {
 
   const { address: connectedAddress = "" } = useAuth()
 
-  const balance = useCINUBalance()
+  const userBalance = useCINUBalance()
 
   return(
     <StyledWrapper>
       <Card>
-        {connectedAddress && (
-          <Text>{balance}</Text>
-        )}
+        <CardContent>
+          <StyledBalances>
+            <StyledBalance>
+              <DogIcon/>
+              <Spacer />
+              <div style={{ flex: 1 }}>
+                <Label text="Your CINU Balance" />
+                <Value
+                  value={!!connectedAddress ? formatCryptoVal(userBalance!) : 'Locked'}
+                />
+              </div>
+            </StyledBalance>
+          </StyledBalances>
+        </CardContent>
+        <Footnote>
+          Initial Total Supply
+          <FootnoteValue>1,000,000,000,000,000 cINU</FootnoteValue>
+        </Footnote>
       </Card>
-      <Footnote>
-        Initial Total Supply
-        <FootnoteValue>1,000,000,000,000,000 CINU</FootnoteValue>
-      </Footnote>
     </StyledWrapper>
   )
 }
