@@ -1,18 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import {Container} from '../Container'
-import {Logo} from '../Logo'
+import {Flex} from 'styles'
+import { defaultTheme } from "theme"
+import {Logo} from 'components/Logo'
 
 import { ConnectButton } from '../ConnectButton'
 import {Nav} from './components/Nav'
 import { ReactChildren } from 'types'
+import {Container as originalContainer} from 'components/Container'
 
+const Container = styled(Flex)`
+	top: 0px;
+	witdth: 100%
+	height: 68px;
+	padding: 4px 20px;
+	background-color: ${defaultTheme.color.primary.light}cc;
+	backdrop-filter: blur(10px);
+  z-index=0
+`
 
 export function TopBar({ children }: ReactChildren) {
   return (
     <StyledTopBar>
-      <Container size="lg">
+      <Container>
         <StyledTopBarInner>
           <StyledLogoWrapper>
             <Logo/>

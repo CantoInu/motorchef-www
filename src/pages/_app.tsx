@@ -1,4 +1,3 @@
-import 'styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
 import { NETWORK_RPC_URL } from "../utils/env-vars"
@@ -9,6 +8,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "theme"
+import { GlobalStyle } from 'styles/GlobalStyle';
 
 const cantoChain: Chain = {
 	id: 7_700,
@@ -54,7 +54,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <ThemeProvider theme={defaultTheme}>
-          <Component {...pageProps} />
+			<GlobalStyle/>
+          	<Component {...pageProps} />
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>
