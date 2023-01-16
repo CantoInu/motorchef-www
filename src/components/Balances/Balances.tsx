@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Card } from 'components/Card'
 import { useAuth, useCINUBalance } from 'hooks'
-import CardContent from 'components/CardContent/CardContent'
+import { CardContent } from 'components/CardContent/CardContent'
 import { DogIcon, GreenChainIcon } from 'components/Icons'
 import { Spacer } from 'components/Spacer'
 import { Value } from 'components/Value'

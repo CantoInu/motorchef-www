@@ -13,4 +13,3 @@ const StyledCardContent = styled.div`
   padding: ${(props) => props.theme.spacing[3]}px;
 `
 
-export default CardContent
