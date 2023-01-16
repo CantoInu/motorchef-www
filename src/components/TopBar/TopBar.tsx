@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {Container} from '../Container'
 import {Logo} from '../Logo'
 
-import { ConnectButton as RKConnectButton } from "@rainbow-me/rainbowkit"
+import { ConnectButton } from '../ConnectButton'
 import {Nav} from './components/Nav'
 import { ReactChildren } from 'types'
 
@@ -15,11 +15,11 @@ export function TopBar({ children }: ReactChildren) {
       <Container size="lg">
         <StyledTopBarInner>
           <StyledLogoWrapper>
-          <Logo/>
+            <Logo/>
           </StyledLogoWrapper>
-          <Nav />
+            <Nav />
           <StyledAccountButtonWrapper>
-            <RKConnectButton />
+            <ConnectButton />
           </StyledAccountButtonWrapper>
         </StyledTopBarInner>
       </Container>
