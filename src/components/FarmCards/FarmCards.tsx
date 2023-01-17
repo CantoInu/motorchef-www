@@ -2,7 +2,7 @@
 import { useAccount } from 'wagmi'
 import { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Text, CenteredFlex } from 'styles'
+import { Text, CenteredFlex, Button, GreenButton } from 'styles'
 import { usePendingMotorChefRewards } from 'hooks/useMotorChef'
 import { bnToDec, formatCryptoVal } from 'utils'
 import BigNumber from 'bignumber.js'
@@ -18,6 +18,7 @@ import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { Card } from 'components/Card'
 import { CardContent } from 'components/CardContent'
 import { Spacer } from 'components/Spacer'
+import { PassLink } from 'components/PassLink'
 
 
 const StyledCards = styled.div`
@@ -95,7 +96,7 @@ const StyledInsight = styled.div`
 `
 
 const StyledCardIcon = styled.div`
-  background-color: ${props => props.theme.backgroundColor.tertiary};
+  background-color: ${props => props.theme.backgroundColor.primary};
   font-size: 48px;
   height: 100px;
   width: 100px;
@@ -221,8 +222,15 @@ function FarmCard() {
                             <StyledDetail>Earn: WCANTO</StyledDetail>
                         </StyledDetails>
                         <Spacer />
+                        <GreenButton >
+                            <Text
+                                fontSize={16}
+                                fontWeight={600}>
+                                Select</Text>
+                        </GreenButton>
                         <StyledInsight>
-                            <Text>APY</Text>
+                            <Text>
+                                APY</Text>
                             <Text>{apy
                                 ? `${apy
                                     .times(new BigNumber(100))

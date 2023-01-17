@@ -27,9 +27,9 @@ export default function Farm() {
           title="So farming, much Free Public Infrastructure"
           subtitle="Deposit CINU/WCANTO LP Tokens and earn WCANTO"
         />
-        <Container>
+
           <FarmCards/>
-        </Container>
+
         <Spacer size="xl" />
         <div
           style={{

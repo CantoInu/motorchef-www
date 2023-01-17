@@ -14,6 +14,20 @@ export const Button = styled.button<{ fitContent?: boolean }>`
 	${({ fitContent = false }) => fitContent && css`width: fit-content;`}
 `
 
+export const GreenButton = styled.button<{ fitContent?: boolean }>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 40px;
+	border-radius: ${({ theme }) => theme.borderRadius.medium};
+	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
+	&:hover {
+		opacity: 0.75;
+	}
+	cursor: pointer;
+	${({ fitContent = false }) => fitContent && css`width: fit-content;`}
+`
+
 export const TransparentButton = styled(Button)`
 	background-color: transparent;
 	border: ${({ theme }) => theme.border.thin};
