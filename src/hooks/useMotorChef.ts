@@ -17,10 +17,6 @@ export function usePendingMotorChefRewards() {
     return data?.toString() || '0'
 }
 
-declare type balanceResultsType = {
-    amount: undefined, 
-    rewardDebt: undefined
-}
 
 export function useStakedBalance() {
     const { address: userAddress } = useAccount();
@@ -46,10 +42,3 @@ export function useStakedBalance() {
     }
 }
 
-/*
-pendingCanto(
-    _pid: string,
-    _user: string,
-    _cTokenIdx: string
-  ):
-*/

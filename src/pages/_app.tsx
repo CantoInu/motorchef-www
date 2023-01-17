@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components"
 import { defiSummerRevivalistTheme } from "styles"
 import { GlobalStyle } from 'styles/GlobalStyle';
 
+
 const cantoChain: Chain = {
 	id: 7_700,
 	name: "Canto",

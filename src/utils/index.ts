@@ -1,6 +1,6 @@
 import { ethers } from "ethers"
 import { formatEther, getAddress } from "ethers/lib/utils"
-
+import BigNumber from 'bignumber.js'
 import { NETWORK_RPC_URL } from "./env-vars"
 import { basicConversionTable } from "../constants"
 
@@ -24,3 +24,8 @@ export function isSameAddress(address1 = "", address2 = "") {
 export function convertCurrencyToCanto(amount: string, currency: string) {
 	return parseFloat(formatEther(amount)) * (basicConversionTable[ currency.toLowerCase() ] || 0)
 }
+
+export const bnToDec = (number: string, decimals = 18): number => {
+	const bn = new BigNumber(number)
+	return bn.dividedBy(new BigNumber(10).pow(decimals)).toNumber()
+  }

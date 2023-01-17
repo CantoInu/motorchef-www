@@ -1,6 +1,5 @@
 
 import { createGlobalStyle } from "styled-components"
-
 import { defiSummerRevivalistTheme } from "styles"
 
 
@@ -10,8 +9,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: typeof defiSummerRevivalis
 
 	html,
 	body {
-		padding: 0;
+		background: #adedd4;
 		margin: 0;
+		font-family: 'Noto Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 600;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
 	a {

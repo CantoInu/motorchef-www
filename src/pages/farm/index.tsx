@@ -1,6 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
-import icon from 'assets/icon.png'
+import farm from 'assets/farm.png'
 
 import {Page} from "components/Page"
 import {PageHeader} from "components/PageHeader"
@@ -13,8 +13,9 @@ import { TopBar } from 'components/TopBar';
 import { useCallback, useState } from 'react';
 import { Seo } from 'components/Seo';
 import { PassLink } from 'components/PassLink';
+import { FarmCards } from 'components/FarmCards';
 
-export default function Home() {
+export default function Farm() {
   return (
     <>
       <Seo/>
@@ -22,12 +23,12 @@ export default function Home() {
       <Page>
         <Spacer size="xl" />
         <PageHeader
-          icon={<Image src={icon} height={240} width={240} alt="WOOF" />}
-          title="MotorChef is (almost) Ready"
-          subtitle="Stake Forteswap LP tokens to farm your share of WCANTO!"
+          icon={<Image src={farm} height={240} width={240} alt="WOOF" />}
+          title="So farming, much Free Public Infrastructure"
+          subtitle="Deposit CINU/WCANTO LP Tokens and earn WCANTO"
         />
         <Container>
-          <Balances/>
+          <FarmCards/>
         </Container>
         <Spacer size="xl" />
         <div
@@ -35,17 +36,15 @@ export default function Home() {
             margin: '0 auto',
           }}
         >
-          <Button>
-            <PassLink href="/farms">
-              <Text
-                  as="a"
-                  textDecoration="none"
-                  fontSize={16}
-                  fontWeight={700}>
-                  🧑‍🌾 Get to farming
-              </Text>
-            </PassLink>
-          </Button>
+          <Text
+              as="a"
+              textDecoration="none"
+              fontSize={16}
+              fontWeight={400}>
+              ⭐️ Every time you stake and unstake LP tokens, the contract will
+          automagically harvest WCANTO rewards for you!
+          </Text>
+
           <Spacer size="xl" />
         </div>
       </Page>

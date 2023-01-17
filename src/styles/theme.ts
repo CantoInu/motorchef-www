@@ -1,6 +1,6 @@
 export const defiSummerRevivalistTheme = {
 	backgroundColor: {
-		primary: "#96d5bc",
+		primary: "#adedd4",
 		secondary: "#ff92be",
 		tertiary: "#09fc9a"
 	},
@@ -15,7 +15,7 @@ export const defiSummerRevivalistTheme = {
 		darkPink: "#981b4e"
 	},
 	border: {
-		primary: "1px solid #059159",
+		primary: "1px solid #ff79ae",
 		thin: "1px solid #ffcee1",
 		medium: "2px solid #ffcee1",
 		thick: "3px solid #ffcee1"

@@ -11,7 +11,8 @@ export type TextProps = {
 	textDecoration?: "none" | "underline" | "overline" | "line-through"
 	letterSpacing?: number,
 	lineHeight?: number,
-	fontStyle?: "normal" | "italic"
+	fontStyle?: "normal" | "italic",
+	fontFamily?: string
 }
 
 export const Text = styled.div<TextProps>`
@@ -26,4 +27,5 @@ export const Text = styled.div<TextProps>`
 	${({ letterSpacing = undefined }) => letterSpacing && css`letter-spacing: ${letterSpacing}px;`}
 	${({ lineHeight = undefined }) => lineHeight && css`line-height: ${lineHeight}px;`}
 	${({ fontStyle = undefined }) => fontStyle && css`font-style: ${fontStyle};`}
+	${({ fontFamily = undefined }) => fontFamily && css`font-: ${fontFamily};`}
 `

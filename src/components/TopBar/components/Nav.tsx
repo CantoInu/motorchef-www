@@ -27,8 +27,8 @@ const StyledNav = styled.nav`
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.textColor.primary};
   font-weight: 700;
-  padding-left: ${(props) => props.theme.spacing[3]}px;
-  padding-right: ${(props) => props.theme.spacing[3]}px;
+  padding-left: ${(props) => props.theme.spacing[4]}px;
+  padding-right: ${(props) => props.theme.spacing[4]}px;
   text-decoration: none;
   &:hover {
     color: ${(props) => props.theme.textColor.secondary};

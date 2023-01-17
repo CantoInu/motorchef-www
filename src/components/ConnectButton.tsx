@@ -11,7 +11,7 @@ const Container = styled(CenteredFlex)<{ isConnected: boolean }>`
 	padding: ${({ isConnected }) => isConnected ? "0px": "8px"};
 	border-radius: 10px;
 	color: ${({ theme }) => theme.textColor.tertiary};
-	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
+	background-color: ${({ theme }) => theme.backgroundColor.secondary};
 	font-size: 12px;
 	font-weight: 700;
 	cursor: pointer;
@@ -43,7 +43,7 @@ const DisconnectButton = styled(CenteredFlex)`
 	border: ${({ theme }) => theme.border.primary};
 
 	color: ${({ theme }) => theme.textColor.tertiary};
-	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
+	background-color: ${({ theme }) => theme.backgroundColor.secondary};
 	cursor: pointer;
 
 	@media(min-width: 576px) {
