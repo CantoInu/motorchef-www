@@ -4,14 +4,14 @@ import { useAuth } from "hooks"
 
 import styled from "styled-components"
 import { CenteredFlex, Text } from "styles"
-import { defaultTheme } from "theme"
+import { defiSummerRevivalistTheme} from "styles"
 
 const Container = styled(CenteredFlex)<{ isConnected: boolean }>`
 	height: 40px;
 	padding: ${({ isConnected }) => isConnected ? "0px": "8px"};
 	border-radius: 10px;
-	color: ${defaultTheme.color.grey};
-	background-color: ${defaultTheme.color.white};
+	color: ${({ theme }) => theme.textColor.tertiary};
+	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
 	font-size: 12px;
 	font-weight: 700;
 	cursor: pointer;
@@ -40,10 +40,10 @@ const DisconnectButton = styled(CenteredFlex)`
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	padding-right: 4px;
-	border: 2px solid ${defaultTheme.color.black};
+	border: ${({ theme }) => theme.border.primary};
 
-	color: ${defaultTheme.color.grey};
-	background-color: ${defaultTheme.color.white};
+	color: ${({ theme }) => theme.textColor.tertiary};
+	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
 	cursor: pointer;
 
 	@media(min-width: 576px) {

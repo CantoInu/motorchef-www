@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Flex} from 'styles'
-import { defaultTheme } from "theme"
+import { defiSummerRevivalistTheme} from "styles"
 import {Logo} from 'components/Logo'
 
 import { ConnectButton } from '../ConnectButton'
@@ -11,10 +11,9 @@ import {Container as originalContainer} from 'components/Container'
 
 const Container = styled(Flex)`
 	top: 0px;
-	witdth: 100%
 	height: 68px;
 	padding: 4px 20px;
-	background-color: ${defaultTheme.color.primary.light}cc;
+	background-color: ${({ theme }) => theme.backgroundColor.tertiary};cc;
 	backdrop-filter: blur(10px);
   z-index=0
 `

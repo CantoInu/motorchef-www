@@ -33,7 +33,7 @@ export function Value({ value, decimals }: ValueProps) {
 
 const StyledValue = styled.div`
   font-family: 'Roboto Mono', monospace;
-  color: ${(props) => props.theme.color.grey[600]};
+  color: ${(props) => props.theme.textColor.tertiary};
   font-size: 36px;
   font-weight: 700;
 `

@@ -16,8 +16,8 @@ import { usePendingMotorChefRewards, useStakedBalance } from "hooks/useMotorChef
 const Footnote = styled.div`
   font-size: 14px;
   padding: 8px 20px;
-  color: ${(props) => props.theme.color.grey[400]};
-  border-top: solid 1px ${(props) => props.theme.color.grey[300]};
+  color: ${(props) => props.theme.textColor.primary};
+  border-top: ${(props) => props.theme.border.primary};
 `
 const FootnoteValue = styled.div`
   font-family: 'Roboto Mono', monospace;

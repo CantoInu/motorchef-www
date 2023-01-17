@@ -7,7 +7,7 @@ import { publicProvider } from "wagmi/providers/public"
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 
 import { ThemeProvider } from "styled-components"
-import { defaultTheme } from "theme"
+import { defiSummerRevivalistTheme } from "styles"
 import { GlobalStyle } from 'styles/GlobalStyle';
 
 const cantoChain: Chain = {
@@ -53,7 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={defiSummerRevivalistTheme}>
 			<GlobalStyle/>
           	<Component {...pageProps} />
         </ThemeProvider>
