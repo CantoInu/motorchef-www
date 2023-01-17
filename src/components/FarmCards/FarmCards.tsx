@@ -164,10 +164,10 @@ const GetAPY = () => {
     const cantoPerYear = WCANTO_PER_BLOCK.times(BLOCKS_PER_YEAR)
     console.log(`canto per year ${cantoPerYear.div(1e18).toString()}`)
 
-    const amountOwned = CTokenStakedBalance.div(CTokenTotalSupply)
-    console.log(`percentage owned ${amountOwned.toString()}`)
+    const percentageCTokenStaked = CTokenStakedBalance.div(CTokenTotalSupply)
+    console.log(`percentage owned ${percentageCTokenStaked.toString()}`)
 
-    const expectedAmount = cantoPerYear.div(amountOwned)
+    const expectedAmount = cantoPerYear.div(percentageCTokenStaked)
     console.log(`expect canto per year ${expectedAmount}`)
 
     const percentageLPStaked = LPTokenStakedAmount.div(LPTokenTotalSupply)
@@ -179,13 +179,11 @@ const GetAPY = () => {
 
     if(!CTokenStakedBalance && !WCANTO_IN_LP) return new BigNumber(0)
 
-    const apy = WCANTO_PER_BLOCK
-                    .times(BLOCKS_PER_YEAR)
-                    .times(CTokenStakedBalance!)
-                    .div(CTokenTotalSupply)
+    const apy = cantoPerYear
+                    .times(percentageCTokenStaked)
                     .div(WCANTO_IN_LP!)
-                    .times(LPTokenStakedAmount)
-                    .div(LPTokenTotalSupply)
+                    .times(2)
+                    .times(percentageLPStaked)
                     .times(1e18)
     
     return apy

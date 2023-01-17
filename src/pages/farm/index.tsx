@@ -27,9 +27,7 @@ export default function Farm() {
           title="So farming, much Free Public Infrastructure"
           subtitle="Deposit CINU/WCANTO LP Tokens and earn WCANTO"
         />
-
-          <FarmCards/>
-
+        <FarmCards/>
         <Spacer size="xl" />
         <div
           style={{
@@ -41,10 +39,8 @@ export default function Farm() {
               textDecoration="none"
               fontSize={16}
               fontWeight={400}>
-              ⭐️ Every time you stake and unstake LP tokens, the contract will
-          automagically harvest WCANTO rewards for you!
+              🎼 Make sure to head over to Forteswap to pool your CINU and WCANTO 🎼 
           </Text>
-
           <Spacer size="xl" />
         </div>
       </Page>
@@ -53,3 +49,7 @@ export default function Farm() {
 };
 
 // issue with formatting comes leaving the container under the header
+
+/*⭐️ Every time you stake and unstake LP tokens, the contract will
+automagically harvest WCANTO rewards for you!
+*/
