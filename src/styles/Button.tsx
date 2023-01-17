@@ -18,8 +18,10 @@ export const GreenButton = styled.button<{ fitContent?: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 12px 40px;
-	border-radius: ${({ theme }) => theme.borderRadius.medium};
+	box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	border-radius: ${({ theme }) => theme.borderRadius.small};
 	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
 	&:hover {
 		opacity: 0.75;

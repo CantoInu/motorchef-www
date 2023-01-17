@@ -23,7 +23,11 @@ export default function Farm() {
       <Page>
         <Spacer size="xl" />
         <PageHeader
-          icon={<Image src={farm} height={240} width={240} alt="WOOF" />}
+          icon={
+            <div style={{borderRadius: '500px', overflow: 'hidden'}}>
+              <Image src={farm} height={150} width={150} alt="WOOF" />
+            </div>
+          }
           title="So farming, much Free Public Infrastructure"
           subtitle="Deposit CINU/WCANTO LP Tokens and earn WCANTO"
         />

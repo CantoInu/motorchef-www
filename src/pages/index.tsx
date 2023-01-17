@@ -36,7 +36,7 @@ export default function Home() {
           }}
         >
           <Button>
-            <PassLink href="/farms">
+            <PassLink href="/farm">
               <Text
                   as="a"
                   textDecoration="none"

@@ -10,6 +10,7 @@ const StyledCard = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  z-index: 0;
 `
 
 

@@ -28,7 +28,8 @@ export const defiSummerRevivalistTheme = {
 	},
 	boxShadow: {
 		primary: "0px 7px 34px rgba(255, 255, 255, 0.2)",
-		dark: "0px 7px 34px rgba(0, 0, 0, 0.5)"
+		dark: "0px 7px 34px rgba(0, 0, 0, 0.5)",
+		inset: "inset 4px 4px 8px #ff428e, inset -6px -6px 12px #ffcee1;"
 	},
 	spacing: {
 		1: 4,

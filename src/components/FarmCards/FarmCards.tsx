@@ -84,19 +84,19 @@ const StyledInsight = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   border-radius: 8px;
-  background: #fffdfa;
-  color: #aa9584;
+  background: ${props => props.theme.backgroundColor.primary};
+  color: #${props => props.theme.textColor.secondary};
   width: 100%;
   margin-top: 12px;
   line-height: 32px;
   font-size: 13px;
-  border: 1px solid #e6dcd5;
+  border: #${props => props.theme.textColor.thin};
   text-align: center;
   padding: 0 12px;
 `
 
 const StyledCardIcon = styled.div`
-  background-color: ${props => props.theme.backgroundColor.primary};
+  background-color: ${props => props.theme.backgroundColor.secondary};
   font-size: 48px;
   height: 100px;
   width: 100px;
@@ -104,8 +104,7 @@ const StyledCardIcon = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  box-shadow: ${props => props.theme.boxShadow.primary},
-    ${props => props.theme.boxShadow.medium};
+  box-shadow: ${props => props.theme.boxShadow.inset}
   margin: 0 auto ${props => props.theme.spacing[3]}px;
 `
 
@@ -142,11 +141,11 @@ const StyledCardAccent = styled.div`
   border-radius: 12px;
   filter: blur(6px);
   position: absolute;
-  top: -2px;
-  right: -2px;
-  bottom: -2px;
-  left: -2px;
-  z-index: -1;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  z-index: 0;
 `
 
 const GetAPY = () => {
