@@ -1,25 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Flex} from 'styles'
+import { defiSummerRevivalistTheme} from "styles"
+import {Logo} from 'components/Logo'
 
-import {Container} from '../Container'
-import {Logo} from '../Logo'
-
-import { ConnectButton as RKConnectButton } from "@rainbow-me/rainbowkit"
+import { ConnectButton } from '../ConnectButton'
 import {Nav} from './components/Nav'
 import { ReactChildren } from 'types'
+import {Container as originalContainer} from 'components/Container'
 
+const Container = styled(Flex)`
+	top: 0px;
+	height: 68px;
+	padding: 4px 20px;
+	background-color: ${({ theme }) => theme.backgroundColor.tertiary};cc;
+	backdrop-filter: blur(10px);
+  z-index=0
+`
 
 export function TopBar({ children }: ReactChildren) {
   return (
     <StyledTopBar>
-      <Container size="lg">
+      <Container>
         <StyledTopBarInner>
           <StyledLogoWrapper>
-          <Logo/>
+            <Logo/>
           </StyledLogoWrapper>
-          <Nav />
+            <Nav />
           <StyledAccountButtonWrapper>
-            <RKConnectButton />
+            <ConnectButton />
           </StyledAccountButtonWrapper>
         </StyledTopBarInner>
       </Container>

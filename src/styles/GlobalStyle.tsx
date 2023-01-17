@@ -1,10 +1,10 @@
 
 import { createGlobalStyle } from "styled-components"
 
-import { defaultTheme } from "theme"
+import { defiSummerRevivalistTheme } from "styles"
 
 
-export const GlobalStyle = createGlobalStyle<{ theme: typeof defaultTheme }>`
+export const GlobalStyle = createGlobalStyle<{ theme: typeof defiSummerRevivalistTheme }>`
 	:root {
 	}
 
@@ -34,8 +34,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: typeof defaultTheme }>`
 		color-scheme: dark;
 	}
 	body {
-		color: ${({ theme }) => theme.color.black};
-		background: ${({ theme }) => theme.color.grey[400]};
+		color: ${({ theme }) => theme.textColor.primary};
+		background: ${({ theme }) => theme.backgroundColor.primary};
 	}
 
 	h1, h2, h3 {

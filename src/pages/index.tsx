@@ -18,18 +18,18 @@ export default function Home() {
 
 
   return (
-    <Page>
+    <>
       <TopBar/>
+      <Page>
         <PageHeader
           icon={<Image src={icon} height={240} width={240} alt="WOOF" />}
           title="MotorChef is Ready"
           subtitle="Stake Forteswap LP tokens to farm your share of WCANTO!"
         />
-
         <Container>
           <Balances/>
         </Container>
-        <Spacer size="lg" />
+        <Spacer size="xl" />
         <div
           style={{
             margin: '0 auto',
@@ -37,7 +37,8 @@ export default function Home() {
         >
           <Button text="🧑‍🌾 Get to farming" to="/farms" variant="secondary" />
         </div>
-    </Page>
+      </Page>
+      </>
   );
 };
 

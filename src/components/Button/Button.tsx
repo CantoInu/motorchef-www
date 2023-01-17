@@ -24,41 +24,37 @@ export function Button({
   to,
   variant,
 }: ButtonProps) {
-  const { color, spacing } = useContext(ThemeContext)
+  const { backgroundColor, boxShadow, spacing } = useContext(ThemeContext)
 
   let buttonColor: string
   switch (variant) {
     case 'secondary':
-      buttonColor = color.grey[500]
+      buttonColor = backgroundColor.secondary
       break
     case 'default':
     default:
-      buttonColor = color.primary.main
+      buttonColor = backgroundColor.primary
   }
 
-  let boxShadow: string
   let buttonSize: number
   let buttonPadding: number
   let fontSize: number
   switch (size) {
     case 'sm':
-      boxShadow = `4px 4px 8px ${color.grey[300]},
-        -8px -8px 16px ${color.grey[100]}FF;`
+      `${boxShadow.primary}, ${boxShadow.dark};`
       buttonPadding = spacing[3]
       buttonSize = 36
       fontSize = 14
       break
     case 'lg':
-      boxShadow = `6px 6px 12px ${color.grey[300]},
-        -12px -12px 24px ${color.grey[100]}ff;`
+      `${boxShadow.primary}, ${boxShadow.dark};`
       buttonPadding = spacing[4]
       buttonSize = 72
       fontSize = 16
       break
     case 'md':
     default:
-      boxShadow = `6px 6px 12px ${color.grey[400]},
-        -9px -9px 24px -2px ${color.grey[300]}ff;`
+      `${boxShadow.primary}, ${boxShadow.dark};`
       buttonPadding = spacing[4]
       buttonSize = 56
       fontSize = 16
@@ -101,7 +97,7 @@ interface StyledButtonProps {
 
 const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
-  background-color: ${props => props.theme.color.grey[200]};
+  background-color: ${props => props.theme.backgroundColor.secondary};
   border: 0;
   border-radius: 12px;
   box-shadow: ${props => props.boxShadow};
@@ -119,7 +115,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   pointer-events: ${props => !props.disabled ? undefined : 'none'};
   width: 100%;
   &:hover {
-    background-color: ${props => props.theme.color.grey[100]};
+    background-color: ${props => props.theme.backgroundColor.secondary};
   }
 `
 
