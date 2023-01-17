@@ -20,7 +20,7 @@ const StyledPageHeader = styled.div`
 `
 
 const StyledIcon = styled.div`
-  height: 120px;
+  height: auto;
   width: 120px;
   padding: 0 auto;
 `

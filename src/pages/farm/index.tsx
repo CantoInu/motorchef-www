@@ -25,7 +25,7 @@ export default function Farm() {
         <PageHeader
           icon={
             <div style={{borderRadius: '500px', overflow: 'hidden'}}>
-              <Image src={farm} height={150} width={150} alt="WOOF" />
+              <Image src={farm}  alt="WOOF" />
             </div>
           }
           title="So farming, much Free Public Infrastructure"
