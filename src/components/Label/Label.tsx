@@ -14,5 +14,3 @@ export function Label({ text }:LabelProps) {
 const StyledLabel = styled.div`
   color: ${(props) => props.theme.color.grey[400]};
 `
-
-export default Label

@@ -38,4 +38,3 @@ const StyledValue = styled.div`
   font-weight: 700;
 `
 
-export default Value
