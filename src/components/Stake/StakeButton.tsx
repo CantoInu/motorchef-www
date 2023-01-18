@@ -121,7 +121,7 @@ export const StakeButton = () => {
 
   const [ approve, setApprove ] = useState(false)
 
-  const isApproved = useNeedsLPApproval()
+  const isApproved = !useNeedsLPApproval()
 
   useEffect(() => {
     if(isApproved) return setApprove(true)

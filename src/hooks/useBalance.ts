@@ -33,7 +33,7 @@ export function useAllLPStakedBalance() {
       token: CINU_WCANTO_LP_PAIR! as Address,
   });
 
-  return data?.value.toString() || undefined
+  return data?.value.sub(1).toString() || undefined
 }
 
 export function useAllLPWETHBalance() {

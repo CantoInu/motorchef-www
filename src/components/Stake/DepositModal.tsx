@@ -151,7 +151,7 @@ export function DepositModal({
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
-		return getFullDisplayBalance(BigNumber(max!))
+		return max!
 	}, [max])
 
 	const handleChange = useCallback(
@@ -166,21 +166,21 @@ export function DepositModal({
 	}, [fullBalance, setVal])
 
 	const { 
-		config,
-		error: prepareError,
-		isError: isPrepareError,
-	} = usePrepareContractWrite({
-		address: MOTORCHEF as Address,
-		abi: MOTORCHEF_ABI,
-		functionName: 'deposit',
-		args: [PID, val]
-	})
-  
-	const { data, error, isError, write } = useContractWrite(config)
-  
-	const { isLoading, isSuccess } = useWaitForTransaction({
-		  hash: data?.hash,
-	})
+        config,
+        error: prepareError,
+        isError: isPrepareError,
+    } = usePrepareContractWrite({
+        address: MOTORCHEF as Address,
+        abi: MOTORCHEF_ABI,
+        functionName: 'deposit',
+        args: [PID!,val!]
+    })
+    
+    const { data, error, isError, write } = useContractWrite(config)
+
+    const { isLoading, isSuccess } = useWaitForTransaction({
+        hash: data?.hash,
+    })
 
 	if (!modalOpen) return null
 
@@ -204,7 +204,7 @@ export function DepositModal({
 								<Button text="Cancel" variant="secondary" onClick={() => setModalOpen(false)} />
 							</StyledModalAction>
 							<StyledModalAction>
-							<GreenButton disabled={!!write || isLoading} onClick={() => write()}>
+							<GreenButton disabled={!write || isLoading} onClick={() => write && write()}>
 								<Text
 									fontWeight={700}
 									fontSize={16}
