@@ -2,7 +2,8 @@ import { useAccount, useContractRead, useBalance as useWagmiBalance, Address, er
 import { MOTORCHEF, CINU_WCANTO_LP_PAIR } from 'utils/env-vars';
 import { BigNumber } from 'ethers';
 
-export function useSufficientLPApproval() {
+export function useNeedsLPApproval() {
+    
 
     const { address: userAddress } = useAccount();
 
@@ -15,12 +16,14 @@ export function useSufficientLPApproval() {
         address: CINU_WCANTO_LP_PAIR as Address,
         abi: erc20ABI,
         functionName: 'allowance',
-        args: [MOTORCHEF! as Address, userAddress!]
+        args: [userAddress!, MOTORCHEF! as Address]
     });
 
-    if(userApproved!.gte(userBalance!.value)) {
-        return true
+    if(!userApproved || !userBalance) return true
+
+    if(userApproved!.gte(userBalance!.value!)) {
+        return false
     }
 
-    return false
+    return true
 }

@@ -1,13 +1,13 @@
 
 import { ReactElement, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { useClaimReward, usePendingMotorChefRewards, useStakedBalance } from 'hooks/useMotorChef'
+import { useStakedBalance } from 'hooks/useMotorChef'
 import { bnToDec, formatCryptoVal } from 'utils'
 
 import { Card } from 'components/Card'
 import { CardContent } from 'components/CardContent'
 
-import { HarvestButton } from './StakeButton'
+import { StakeButton } from './StakeButton'
 
 
 
@@ -36,7 +36,7 @@ const StyledRow = styled.div`
 
 const StyledCardWrapper = styled.div`
   display: flex;
-  height: 330px;
+  height: 355px;
   width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
   position: relative;
 `
@@ -56,7 +56,7 @@ const StyledContent = styled.div`
 `
 
 const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[7]}px;
+  height: ${(props) => props.theme.spacing[6]}px;
   width: ${(props) => props.theme.spacing[7]}px;
 `
 
@@ -88,27 +88,25 @@ const StyledInsight = styled.div`
 
 const StyledCardIcon = styled.div`
   background-color: ${props => props.theme.backgroundColor.secondary};
-  font-size: 40px;
+  font-size: 48px;
   height: 100px;
   width: 100px;
   border-radius: 500px;
   align-items: center;
   display: flex;
   justify-content: center;
-  letter-spacing: -14px; 
-  white-space: nowrap;
   box-shadow: ${props => props.theme.boxShadow.inset}
   margin: 0 auto ${props => props.theme.spacing[3]}px;
 `
 
-const PendingRewards = (): ReactElement => {
-  const [pending, setPending] = useState(false);
-  const pendingAmount = usePendingMotorChefRewards()
+const StakedAmount = (): ReactElement => {
+  const [staked, setStaked] = useState(false);
+  const stakedAmount = useStakedBalance()
 
   useEffect(() => {
-    setPending(true)
+    setStaked(true)
     
-  }, [pending, pendingAmount]);
+  }, [staked, stakedAmount]);
 
   return (
     <span
@@ -121,27 +119,27 @@ const PendingRewards = (): ReactElement => {
         fontSize: 40
       }}
     >
-    {!!pending ? formatCryptoVal(pendingAmount!) : 'Locked'}
+    {!!staked ? formatCryptoVal(stakedAmount.amount!) : 'Locked'}
     </span>
   )
 }
 
 
 
-function HarvestCard() {
+function StakeCard() {
 
     return (
         <StyledCardWrapper>
             <Card>
               <CardContent>
                 <StyledContent>
-                  <StyledCardIcon>🟩⛓️</StyledCardIcon>
-                    <PendingRewards/>
+                  <StyledCardIcon>🐕</StyledCardIcon>
+                    <StakedAmount/>
                   <StyledDetails>
-                    <StyledDetail>WCANTO Earned</StyledDetail>
+                    <StyledDetail>vAMM CINU/WCANTO LP Tokens Staked</StyledDetail>
                   </StyledDetails>
                   <StyledSpacer/>
-                  <HarvestButton/>
+                  <StakeButton/>
                 </StyledContent>
               </CardContent>
             </Card>
@@ -151,11 +149,11 @@ function HarvestCard() {
 
 
 
-export function Harvest() {
+export function Stake() {
 
     return (
         <StyledCards>
-          <HarvestCard/>
+          <StakeCard/>
         </StyledCards>
     )
 

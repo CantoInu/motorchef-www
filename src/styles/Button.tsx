@@ -14,15 +14,18 @@ export const Button = styled.button<{ fitContent?: boolean }>`
 	${({ fitContent = false }) => fitContent && css`width: fit-content;`}
 `
 
-export const GreenButton = styled.button<{ fitContent?: boolean }>`
+export const GreenButton = styled.button<{ fitContent?: boolean, disabled?: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
 	width: 100%;
+	height: 56px;
 	padding: 8px;
 	border-radius: ${({ theme }) => theme.borderRadius.small};
-	background-color: ${({ theme }) => theme.backgroundColor.tertiary};
+	background-color: ${({ theme, disabled }) => disabled ? theme.backgroundColor.disabled : theme.backgroundColor.tertiary};
+	color:  ${({ theme, disabled }) => disabled ? theme.textColor.disabled : theme.textColor.tertiary};
+	pointer-events: ${({disabled}) => disabled ? undefined : 'none'}
 	&:hover {
 		opacity: 0.75;
 	}

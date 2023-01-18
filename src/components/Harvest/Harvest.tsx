@@ -36,7 +36,7 @@ const StyledRow = styled.div`
 
 const StyledCardWrapper = styled.div`
   display: flex;
-  height: 330px;
+  height: 355px;
   width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
   position: relative;
 `
@@ -95,7 +95,7 @@ const StyledCardIcon = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  letter-spacing: -14px; 
+  letter-spacing: -10px; 
   white-space: nowrap;
   box-shadow: ${props => props.theme.boxShadow.inset}
   margin: 0 auto ${props => props.theme.spacing[3]}px;
@@ -135,7 +135,7 @@ function HarvestCard() {
             <Card>
               <CardContent>
                 <StyledContent>
-                  <StyledCardIcon>🟩⛓️</StyledCardIcon>
+                  <StyledCardIcon>🟩⛓️&nbsp;&nbsp;</StyledCardIcon>
                     <PendingRewards/>
                   <StyledDetails>
                     <StyledDetail>WCANTO Earned</StyledDetail>

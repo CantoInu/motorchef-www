@@ -7,6 +7,7 @@ import { Seo } from 'components/Seo';
 import { Harvest } from 'components/Harvest';
 import { DogIcon } from 'components/Icons';
 import styled from "styled-components";
+import { Stake } from "components/Stake";
 
 
 const StyledFarm = styled.div`
@@ -64,7 +65,7 @@ export default function CINUWCANTO() {
           </StyledCardWrapper>
           <Spacer />
           <StyledCardWrapper>
-		  	<Harvest/>
+		  	<Stake/>
           </StyledCardWrapper>
         </StyledCardsWrapper>
 		<Spacer size="xl" />

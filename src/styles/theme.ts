@@ -2,12 +2,14 @@ export const defiSummerRevivalistTheme = {
 	backgroundColor: {
 		primary: "#adedd4",
 		secondary: "#ff92be",
-		tertiary: "#09fc9a"
+		tertiary: "#09fc9a",
+		disabled: "#B9C6C1"
 	},
 	textColor: {
 		primary: "#89214b",
 		secondary: "#044129",
-		tertiary: "#ff428e"
+		tertiary: "#ff428e",
+		disabled: "#F695BC"
 	},
 	accentColor: {
 		green: "#059159",
