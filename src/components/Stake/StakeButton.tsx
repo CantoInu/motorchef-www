@@ -81,8 +81,12 @@ const StakingButton = () => {
   
   const [ depositModalOpen, setDepositModalOpen ] = useState(false)
   const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
+  const [ staking, setStaking ] = useState<boolean>()
 
-  const isStaked = useStakedBalance()?.amount !== '0' ? true : false   
+  const { amount  = "0" } = useStakedBalance()
+  useEffect(() => {
+      setStaking(amount !== "0")
+  }, [ amount ])
 
   return (
     <>
@@ -96,15 +100,15 @@ const StakingButton = () => {
         />
       <StyledButtonContent>
         <StyledCardActions>
-          <GreenButton disabled={!isStaked} onClick={() => setWithdrawModalOpen(true)}>
+          <GreenButton disabled={ amount != "0" } onClick={() => setWithdrawModalOpen(true)}>
             <Text
               fontWeight={700}
               fontSize={16}
             >
-              {isStaked? 'Unstake' : 'Stake'}
+              {setStaking! ? 'Unstake' : 'Stake'}
             </Text>
           </GreenButton> 
-          {isStaked
+          {setStaking!
             ? <>
                 <StyledActionSpacer/>
                 <AddButton disabled={false} onClick={() => setDepositModalOpen(true)}/>
@@ -119,17 +123,17 @@ const StakingButton = () => {
 // fix the hydration issue
 export const StakeButton = () => {
 
-  const [ approve, setApprove ] = useState(false)
+  const [ approve, setApprove ] = useState<boolean>()
 
   const isApproved = !useNeedsLPApproval()
 
   useEffect(() => {
-    if(isApproved) return setApprove(true)
-  },[approve])
+    setApprove(isApproved)
+  }, [ approve ])
     
   return (
     <>
-        {isApproved 
+        {setApprove! 
           ? <StakingButton/>
           : <ApproveLPButton/>}
     </>

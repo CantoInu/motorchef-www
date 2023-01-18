@@ -148,7 +148,6 @@ export function WithdrawModal({
 	const max = useStakedBalance().amount
 
 	const [val, setVal] = useState('')
-	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
 		return max!

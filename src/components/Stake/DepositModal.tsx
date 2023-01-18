@@ -148,7 +148,6 @@ export function DepositModal({
 	const max = useLPBalance()
 
 	const [val, setVal] = useState('')
-	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
 		return max!
