@@ -45,7 +45,7 @@ const StyledSubtitle = styled.h3`
 
 export function PageHeader({ icon, subtitle, title }:PageHeaderProps) {
   return (
-    <Container size="md">
+    <Container size="lg">
       <StyledPageHeader>
         <StyledIcon>{icon}</StyledIcon>
         <StyledTitle>{title}</StyledTitle>

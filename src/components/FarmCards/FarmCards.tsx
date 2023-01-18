@@ -165,13 +165,12 @@ const GetAPY = () => {
     const cantoPerYear = WCANTO_PER_BLOCK.times(BLOCKS_PER_YEAR)
     const percentageCTokenStaked = CTokenStakedBalance.div(CTokenTotalSupply)
     const percentageLPStaked = LPTokenStakedAmount.div(LPTokenTotalSupply)
+    const wcantoInStakedLP = WCANTO_IN_LP!.times(percentageLPStaked).times(2)
+    console.log(wcantoInStakedLP.div(1e18).toString())
 
     const apy = cantoPerYear
                     .times(percentageCTokenStaked)
-                    .div(WCANTO_IN_LP!)
-                    .times(2)
-                    .times(percentageLPStaked)
-                    .times(1e18)
+                    .div(wcantoInStakedLP)
     
     useEffect(() => {
       setApyNumber(true)
@@ -200,10 +199,13 @@ function FarmCard() {
                         </StyledDetails>
                         <Spacer />
                         <GreenButton >
-                            <Text
+                            <PassLink href='/vAMM CINU/WCANTO'>
+                              <Text
                                 fontSize={16}
                                 fontWeight={600}>
-                                Select</Text>
+                                Select
+                              </Text>
+                            </PassLink>
                         </GreenButton>
                         <StyledInsight>
                             <Text>

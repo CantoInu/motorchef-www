@@ -10,9 +10,9 @@ const Container = styled(CenteredFlex)<{ isConnected: boolean }>`
 	height: 40px;
 	padding: ${({ isConnected }) => isConnected ? "0px": "8px"};
 	border-radius: 10px;
-	color: ${({ theme }) => theme.textColor.tertiary};
+	color: ${({ theme }) => theme.textColor.secondary};
 	background-color: ${({ theme }) => theme.backgroundColor.secondary};
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: 700;
 	cursor: pointer;
 	& > * {
@@ -41,8 +41,10 @@ const DisconnectButton = styled(CenteredFlex)`
 	border-bottom-right-radius: 10px;
 	padding-right: 4px;
 	border: ${({ theme }) => theme.border.primary};
+	font-size: 24px;
+	font-weight: 700;
 
-	color: ${({ theme }) => theme.textColor.tertiary};
+	color: ${({ theme }) => theme.textColor.secondary};
 	background-color: ${({ theme }) => theme.backgroundColor.secondary};
 	cursor: pointer;
 
@@ -93,7 +95,7 @@ export function ConnectButton() {
 								<DisconnectButton
 									title="Disconnect Wallet"
 									onClick={() => logout()}>
-									x
+									🐾
 								</DisconnectButton>
 							)}
 						</Container>
