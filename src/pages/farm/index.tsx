@@ -1,16 +1,11 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
 import farm from 'assets/farm.png'
 
 import {Page} from "components/Page"
 import {PageHeader} from "components/PageHeader"
 import Image from "next/image"
-import {Container} from 'components/Container';
-import {Balances} from 'components/Balances';
 import { Spacer } from 'components/Spacer';
-import { Button, Text } from 'styles';
+import { Text } from 'styles';
 import { TopBar } from 'components/TopBar';
-import { useCallback, useState } from 'react';
 import { Seo } from 'components/Seo';
 import { PassLink } from 'components/PassLink';
 import { FarmCards } from 'components/FarmCards';
@@ -43,7 +38,23 @@ export default function Farm() {
               textDecoration="none"
               fontSize={16}
               fontWeight={400}>
-              🎼 Make sure to head over to Forteswap to pool your CINU and WCANTO 🎼 
+              Make sure to head over to&nbsp; 
+          </Text>
+          <PassLink href="https://app.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO">
+            <Text
+                as="a"
+                fontSize={16}
+                textDecoration="underline"
+                fontWeight={600}>
+                Leetswap 
+            </Text>
+          </PassLink>
+          <Text
+              as="a"
+              textDecoration="none"
+              fontSize={16}
+              fontWeight={400}>
+              &nbsp;to pool your CINU🐶 and WCANTO🟩⛓️ 
           </Text>
           <Spacer size="xl" />
         </div>
@@ -51,9 +62,3 @@ export default function Farm() {
       </>
   );
 };
-
-// issue with formatting comes leaving the container under the header
-
-/*⭐️ Every time you stake and unstake LP tokens, the contract will
-automagically harvest WCANTO rewards for you!
-*/

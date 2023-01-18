@@ -1,6 +1,13 @@
-import { useAccount, useContractRead, Address } from 'wagmi'
+import { 
+    useAccount, 
+    useContractRead, 
+    usePrepareContractWrite, 
+    useContractWrite, 
+    Address, 
+    useWaitForTransaction
+} from 'wagmi'
 import { MOTORCHEF_ABI } from 'constants/abis';
-import { MOTORCHEF } from 'utils/env-vars';
+import { MOTORCHEF, PID } from 'utils/env-vars';
 import { useEffect, useState } from "react"
 
 export function usePendingMotorChefRewards() {
@@ -11,7 +18,7 @@ export function usePendingMotorChefRewards() {
         address: MOTORCHEF as Address,
         abi: MOTORCHEF_ABI,
         functionName: 'pendingCanto',
-        args: [0, userAddress!, 0]
+        args: [PID!, userAddress!, 0]
     });
 
     useEffect(() => {
@@ -30,7 +37,7 @@ export function useStakedBalance() {
         address: MOTORCHEF as Address,
         abi: MOTORCHEF_ABI,
         functionName: 'userInfo',
-        args: [0, userAddress!]
+        args: [PID!, userAddress!]
     });
 
     if(!getBalanceResults) {

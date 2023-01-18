@@ -199,7 +199,7 @@ function FarmCard() {
                         </StyledDetails>
                         <Spacer />
                         <GreenButton >
-                            <PassLink href='/vAMM CINU/WCANTO'>
+                            <PassLink href='/farms/CINUWCANTO'>
                               <Text
                                 fontSize={16}
                                 fontWeight={600}>

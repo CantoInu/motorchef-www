@@ -27,9 +27,9 @@ export function Nav() {
       </StyledLink>
       <StyledLink
         target="_blank"
-        href="https://forteswap.xyz/pool"
+        href="https://app.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO"
       >
-        Forteswap
+        Leetswap
       </StyledLink>
       <StyledLink target="_blank" href="https://t.me/cantoInu">
         Telegram

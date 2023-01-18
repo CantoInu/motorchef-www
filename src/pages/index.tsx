@@ -24,7 +24,7 @@ export default function Home() {
         <PageHeader
           icon={<Image src={icon} height={240} width={240} alt="WOOF" />}
           title="MotorChef is (almost) Ready"
-          subtitle="Stake Forteswap LP tokens to farm your share of WCANTO!"
+          subtitle="Stake Canto Native DEX LP tokens to farm your share of WCANTO!"
         />
         <Container>
           <Balances/>
