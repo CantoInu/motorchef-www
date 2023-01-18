@@ -1,5 +1,4 @@
 
-import { useAccount } from 'wagmi'
 import { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Text, CenteredFlex, Button, GreenButton } from 'styles'

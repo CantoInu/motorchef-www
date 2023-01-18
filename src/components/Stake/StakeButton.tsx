@@ -5,12 +5,16 @@ import {
     useWaitForTransaction,
     erc20ABI,
 } from 'wagmi'
-import { MOTORCHEF, CINU_WCANTO_LP_PAIR } from 'utils/env-vars';
+import { MOTORCHEF, CINU_WCANTO_LP_PAIR, PID } from 'utils/env-vars';
 import { GreenButton, Text } from 'styles'
 import styled from 'styled-components';
 import {useNeedsLPApproval, useStakedBalance} from 'hooks';
 import { MaxUint256 } from '@ethersproject/constants'
 import AddButton from 'components/AddButton/AddButton';
+import { DepositModal } from './DepositModal';
+import { MOTORCHEF_ABI } from 'constants/abis';
+import { useState } from 'react';
+import { WithdrawModal } from './WithdrawModal';
 
 const StyledButtonContent = styled.div`
   align-items: center;
@@ -47,6 +51,9 @@ const PrepareLPApproval = () => {
 }
 
 export const StakeButton = () => {
+    const [ depositModalOpen, setDepositModalOpen ] = useState(false)
+    const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
+
     const isApproved = useNeedsLPApproval()
     const isStaked = useStakedBalance()?.amount !== '0' ? true : false
   
@@ -59,27 +66,37 @@ export const StakeButton = () => {
     })
 
     return (
-      <StyledButtonContent>
-        <StyledCardActions>
-          <GreenButton disabled={!write || isLoading || !isStaked} onClick={() => write()}>
-            <Text
-              fontWeight={700}
-              fontSize={16}
-            >
-              {isApproved 
-                ? 'Unstake'
-                  : 'Approve vAMM CINU-WCANTO LP'}
-            </Text>
-          </GreenButton>
-          <StyledActionSpacer/>
-          <AddButton disabled={false}/>
-        </StyledCardActions>
-        {isSuccess && (
-          <div>
-            <a href={`https://evm.explorer.canto.io/tx/${data?.hash}`}>See Transaction</a>
-          </div>
-        )}
-      </StyledButtonContent>
+      <>
+        <DepositModal
+          modalOpen={depositModalOpen}
+          setModalOpen={setDepositModalOpen}
+        />
+        <WithdrawModal
+          modalOpen={withdrawModalOpen}
+          setModalOpen={setWithdrawModalOpen}
+        />
+        <StyledButtonContent>
+          <StyledCardActions>
+            <GreenButton disabled={!write || isLoading || !isStaked} onClick={() => isApproved? setWithdrawModalOpen(true) : write()}>
+              <Text
+                fontWeight={700}
+                fontSize={16}
+              >
+                {isApproved 
+                  ? 'Unstake'
+                    : 'Approve vAMM CINU-WCANTO LP'}
+              </Text>
+            </GreenButton>
+            <StyledActionSpacer/>
+            <AddButton disabled={false} onClick={() => setDepositModalOpen(true)}/>
+          </StyledCardActions>
+          {isSuccess && (
+            <div>
+              <a href={`https://evm.explorer.canto.io/tx/${data?.hash}`}>See Transaction</a>
+            </div>
+          )}
+        </StyledButtonContent>
+      </>
     )
 
 }
