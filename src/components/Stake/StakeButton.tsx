@@ -13,7 +13,7 @@ import { MaxUint256 } from '@ethersproject/constants'
 import AddButton from 'components/AddButton/AddButton';
 import { DepositModal } from './DepositModal';
 import { MOTORCHEF_ABI } from 'constants/abis';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WithdrawModal } from './WithdrawModal';
 
 const StyledButtonContent = styled.div`
@@ -35,7 +35,7 @@ const StyledActionSpacer = styled.div`
   width: ${(props) => props.theme.spacing[3]}px;
 `
 
-const PrepareLPApproval = () => {
+const ApproveLPButton = () => {
   const { 
       config,
       error: prepareError,
@@ -47,56 +47,92 @@ const PrepareLPApproval = () => {
       args: [MOTORCHEF as Address, MaxUint256]
   })
 
-  return {config: config, error: prepareError, isError: isPrepareError}
+  const { data, error, isError, write } = useContractWrite(config)
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+        hash: data?.hash,
+  })
+
+  return(
+    <StyledButtonContent>
+      <StyledCardActions>
+        <GreenButton disabled={!write || isLoading} onClick={() => write()}>
+          <Text
+            fontWeight={700}
+            fontSize={16}
+          >
+            Approve vAMM CINU/WCANTO LP
+          </Text>
+        </GreenButton>
+      </StyledCardActions>
+        {isSuccess! && (
+          <div>
+            <a href={`https://evm.explorer.canto.io/tx/${data?.hash}`}>See Transaction</a>
+          </div>
+        )}
+        {(isPrepareError || isError) && (
+          <div>Error: {(prepareError || error)?.message}</div>
+        )}  
+    </StyledButtonContent>
+  )
 }
 
-export const StakeButton = () => {
-    const [ depositModalOpen, setDepositModalOpen ] = useState(false)
-    const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
-
-    const isApproved = useNeedsLPApproval()
-    const isStaked = useStakedBalance()?.amount !== '0' ? true : false
+const StakingButton = () => {
   
-    const preparedConfig  = isApproved? PrepareLPApproval() : PrepareLPApproval()
+  const [ depositModalOpen, setDepositModalOpen ] = useState(false)
+  const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
+
+  const isStaked = useStakedBalance()?.amount !== '0' ? true : false   
+
+  return (
+    <>
+      <DepositModal
+            modalOpen={depositModalOpen}
+            setModalOpen={setDepositModalOpen}
+          />
+          <WithdrawModal
+            modalOpen={withdrawModalOpen}
+            setModalOpen={setWithdrawModalOpen}
+        />
+      <StyledButtonContent>
+        <StyledCardActions>
+          <GreenButton disabled={!isStaked} onClick={() => setWithdrawModalOpen(true)}>
+            <Text
+              fontWeight={700}
+              fontSize={16}
+            >
+              {isStaked? 'Unstake' : 'Stake'}
+            </Text>
+          </GreenButton> 
+          {isStaked
+            ? <>
+                <StyledActionSpacer/>
+                <AddButton disabled={false} onClick={() => setDepositModalOpen(true)}/>
+                </>
+            : <></>}
+        </StyledCardActions>
+      </StyledButtonContent>
+    </>
+  )
+}
+
+// fix the hydration issue
+export const StakeButton = () => {
+
+  const [ approve, setApprove ] = useState(false)
+
+  const isApproved = useNeedsLPApproval()
+
+  useEffect(() => {
+    if(isApproved) return setApprove(true)
+  },[approve])
     
-    const { data, error, isError, write } = useContractWrite(preparedConfig.config)
-
-    const { isLoading, isSuccess } = useWaitForTransaction({
-        hash: data?.hash,
-    })
-
-    return (
-      <>
-        <DepositModal
-          modalOpen={depositModalOpen}
-          setModalOpen={setDepositModalOpen}
-        />
-        <WithdrawModal
-          modalOpen={withdrawModalOpen}
-          setModalOpen={setWithdrawModalOpen}
-        />
-        <StyledButtonContent>
-          <StyledCardActions>
-            <GreenButton disabled={!write || isLoading || !isStaked} onClick={() => isApproved? setWithdrawModalOpen(true) : write()}>
-              <Text
-                fontWeight={700}
-                fontSize={16}
-              >
-                {isApproved 
-                  ? 'Unstake'
-                    : 'Approve vAMM CINU-WCANTO LP'}
-              </Text>
-            </GreenButton>
-            <StyledActionSpacer/>
-            <AddButton disabled={false} onClick={() => setDepositModalOpen(true)}/>
-          </StyledCardActions>
-          {isSuccess && (
-            <div>
-              <a href={`https://evm.explorer.canto.io/tx/${data?.hash}`}>See Transaction</a>
-            </div>
-          )}
-        </StyledButtonContent>
-      </>
-    )
+  return (
+    <>
+        {isApproved 
+          ? <StakingButton/>
+          : <ApproveLPButton/>}
+    </>
+  )
 
 }

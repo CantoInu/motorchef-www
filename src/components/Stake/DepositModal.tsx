@@ -26,7 +26,7 @@ export function DepositModal({
 
 	return (
 		<Modal
-			title="Settings"
+			title="Stake vAMM CINU/WCANTO LP"
 			onClose={() => setModalOpen(false)}
 			content={
 				<Flex

@@ -119,7 +119,7 @@ const StakedAmount = (): ReactElement => {
         fontSize: 40
       }}
     >
-    {!!staked ? formatCryptoVal(stakedAmount.amount!) : 'Locked'}
+    {!!staked ? formatCryptoVal(stakedAmount?.amount!) : 'Locked'}
     </span>
   )
 }

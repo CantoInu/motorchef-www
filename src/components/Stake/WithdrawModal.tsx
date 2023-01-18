@@ -26,7 +26,7 @@ export function WithdrawModal({
 
 	return (
 		<Modal
-			title="Settings"
+			title="Unstake vAMM CINU/WCANTO LP"
 			onClose={() => setModalOpen(false)}
 			content={
 				<Flex
