@@ -83,10 +83,11 @@ const StakingButton = () => {
   const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
   const [ staking, setStaking ] = useState<boolean>()
 
-  const { amount  = "0" } = useStakedBalance()
+  const isStaked = useStakedBalance()?.amount != "0" ? true : false
+
   useEffect(() => {
-      setStaking(amount !== "0")
-  }, [ amount ])
+    setStaking(isStaked)
+  }, [ staking ])
 
   return (
     <>
@@ -100,7 +101,7 @@ const StakingButton = () => {
         />
       <StyledButtonContent>
         <StyledCardActions>
-          <GreenButton disabled={ amount != "0" } onClick={() => setWithdrawModalOpen(true)}>
+          <GreenButton disabled={ !isStaked } onClick={() => setWithdrawModalOpen(true)}>
             <Text
               fontWeight={700}
               fontSize={16}
