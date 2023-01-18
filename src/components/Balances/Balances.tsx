@@ -1,5 +1,6 @@
 
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useState, useEffect } from 'react'
+
 import styled from 'styled-components'
 
 import { Card } from 'components/Card'
@@ -27,6 +28,7 @@ const FootnoteValue = styled.div`
 const StyledWrapper = styled.div`
   align-items: center;
   display: flex;
+  width: 100%;
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
@@ -45,22 +47,28 @@ const StyledBalance = styled.div`
 `
 
 const PendingRewards = (): ReactElement => {
-  const pending = usePendingMotorChefRewards()
-  const [scale] = useState(1)
+  const [pending, setPending] = useState(false);
+  const pendingAmount = usePendingMotorChefRewards()
+
+  useEffect(() => {
+    setPending(true)
+    
+  }, [pending, pendingAmount]);
 
   return (
     <span
       style={{
-        transform: `scale(${scale})`,
+        transform: `scale(1)`,
         transformOrigin: 'right bottom',
         transition: 'transform 0.5s',
         display: 'inline-block',
       }}
     >
-    {!!pending ? formatCryptoVal(pending) : 'Locked'}
+    {!!pending ? formatCryptoVal(pendingAmount!) : 'Locked'}
     </span>
   )
 }
+
 
 export function Balances() {
 
@@ -80,7 +88,7 @@ export function Balances() {
               <div style={{ flex: 1 }}>
                 <Label text="Your Staked LP Balance" />
                 <Value
-                  value={connectedAddress && userStakedBalance.amount ? formatCryptoVal(userStakedBalance.amount) : 'Locked'}
+                  value={connectedAddress && userStakedBalance?.amount? formatCryptoVal(userStakedBalance.amount) : 'Locked'}
                 />
               </div>
             </StyledBalance>

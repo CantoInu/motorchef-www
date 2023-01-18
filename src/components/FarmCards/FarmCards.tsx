@@ -185,6 +185,10 @@ const GetAPY = () => {
                     .times(percentageLPStaked)
                     .times(1e18)
     
+    console.log(`apy result ${apy}`)
+
+    if(apy == undefined) return new BigNumber(0)
+
     return apy
     
 }
@@ -228,8 +232,7 @@ function FarmCard() {
                         <StyledInsight>
                             <Text>
                                 APY</Text>
-                            <Text>{apy
-                                ? `${apy
+                            <Text>{apy != BigNumber(0)? `${apy
                                     .times(new BigNumber(100))
                                     .toNumber()
                                     .toLocaleString('en-US')

@@ -3,7 +3,7 @@ import { useBalance as useWagmiBalance, useAccount, Address } from 'wagmi'
 import { CINU, WCANTO, CINU_WCANTO_LP_PAIR, MOTORCHEF, CCANTO_NOTE } from 'utils/env-vars'
 
 export function useCINUBalance() {
-  
+
   const { address: userAddress } = useAccount();
 
   const { data, isError, isLoading, error } = useWagmiBalance({

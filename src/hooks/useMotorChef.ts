@@ -1,10 +1,10 @@
 import { useAccount, useContractRead, Address } from 'wagmi'
 import { MOTORCHEF_ABI } from 'constants/abis';
 import { MOTORCHEF } from 'utils/env-vars';
-import { useMemo } from 'react'
+import { useEffect, useState } from "react"
 
 export function usePendingMotorChefRewards() {
-  
+    const [pendingReward, setPendingReward] = useState<boolean>()
     const { address: userAddress } = useAccount();
 
     const { data, isError, isLoading, error } = useContractRead({
@@ -14,7 +14,12 @@ export function usePendingMotorChefRewards() {
         args: [0, userAddress!, 0]
     });
 
-    return data?.toString() || '0'
+    useEffect(() => {
+        if(!data) return setPendingReward(false)
+
+    },[data])
+
+    return `${data}` || undefined
 }
 
 

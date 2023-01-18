@@ -6,19 +6,18 @@ interface ContainerProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
-export function Container({ children, size = 'md' }:ContainerProps) {
-  const { siteWidth } = useContext<{ siteWidth: number }>(ThemeContext)
+export function Container({ children, size = 'lg' }:ContainerProps) {
   let width: number
   switch (size) {
     case 'sm':
-      width = siteWidth / 2
+      width = 50
       break
     case 'md':
-      width = siteWidth * 2 / 3
+      width = 66
       break
     case 'lg':
     default:
-      width = siteWidth
+      width = 100
   }
   return (
     <StyledContainer width={width}>
@@ -34,7 +33,7 @@ interface StyledContainerProps {
 const StyledContainer = styled.div<StyledContainerProps>`
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: ${props => props.width}px;
+  max-width: ${props => props.width}vw;
   padding: 0 ${props => props.theme.spacing[4]}px;
-  width: 100%;
+  width: %;
 `
