@@ -24,16 +24,19 @@ export function Button({
   to,
   variant,
 }: ButtonProps) {
-  const { backgroundColor, boxShadow, spacing } = useContext(ThemeContext)
+  const { textColor, backgroundColor, boxShadow, spacing } = useContext(ThemeContext)
 
-  let buttonColor: string
+  let buttonTextColor: string
+  let buttonBGColor: string
   switch (variant) {
     case 'secondary':
-      buttonColor = backgroundColor.secondary
+      buttonTextColor = textColor.secondary
+      buttonBGColor = backgroundColor.secondary
       break
     case 'default':
     default:
-      buttonColor = backgroundColor.primary
+      buttonTextColor = textColor.tertiary
+      buttonBGColor = backgroundColor.tertiary
   }
 
   let buttonSize: number
@@ -73,7 +76,8 @@ export function Button({
   return (
     <StyledButton
       boxShadow={boxShadow}
-      color={buttonColor}
+      color={buttonTextColor}
+      backgroundColor={buttonBGColor}
       disabled={disabled}
       fontSize={fontSize}
       onClick={onClick}
@@ -89,6 +93,7 @@ export function Button({
 interface StyledButtonProps {
   boxShadow: string,
   color: string,
+  backgroundColor: string,
   disabled?: boolean,
   fontSize: number,
   padding: number,
@@ -97,11 +102,11 @@ interface StyledButtonProps {
 
 const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
-  background-color: ${props => props.theme.backgroundColor.secondary};
+  background-color: ${props => !props.disabled ? props.backgroundColor : `${props.backgroundColor}`};
   border: 0;
   border-radius: 12px;
   box-shadow: ${props => props.boxShadow};
-  color: ${props => !props.disabled ? props.color : `${props.color}55`};
+  color: ${props => !props.disabled ? props.disabled : `${props.color}`};
   cursor: pointer;
   display: flex;
   font-size: ${props => props.fontSize}px;
@@ -115,7 +120,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   pointer-events: ${props => !props.disabled ? undefined : 'none'};
   width: 100%;
   &:hover {
-    background-color: ${props => props.theme.backgroundColor.secondary};
+    background-color: ${props => !props.disabled ? props.backgroundColor : `${props.backgroundColor}`};
   }
 `
 

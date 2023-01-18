@@ -18,7 +18,7 @@ const Overlay = styled(Container)`
 `
 
 const ModalContainer = styled(Flex)`
-	width: 400px;
+	width: 700px;
 	max-width: calc(100vw - 40px);
 	padding: 32px 0;
 	background-color: ${({ theme }) => theme.backgroundColor.primary};
@@ -56,8 +56,8 @@ export function Modal({ onClose, title, content }: ModalProps) {
 					<ModalHeader
 						justify="space-between"
 						align="center">
-						<Text fontSize={24}>{title}</Text>
-						<Text onClick={onClose}>x</Text>
+						<Text fontSize={20}>{title}</Text>
+						<Text onClick={onClose}>🐾</Text>
 					</ModalHeader>
 				)}
 				<ModalBody
