@@ -149,6 +149,8 @@ const StyledCardAccent = styled.div`
 `
 
 const GetAPY = () => {
+  const [apyNumber, setApyNumber] = useState(false)
+
     const BLOCKS_PER_YEAR = new BigNumber(5256000)
     const WCANTO_PER_BLOCK = new BigNumber(useComptrollerRatePerBlock())
 
@@ -161,22 +163,8 @@ const GetAPY = () => {
     const CTokenStakedBalance = new BigNumber(useStakedCTokenBalance())
 
     const cantoPerYear = WCANTO_PER_BLOCK.times(BLOCKS_PER_YEAR)
-    console.log(`canto per year ${cantoPerYear.div(1e18).toString()}`)
-
     const percentageCTokenStaked = CTokenStakedBalance.div(CTokenTotalSupply)
-    console.log(`percentage owned ${percentageCTokenStaked.toString()}`)
-
-    const expectedAmount = cantoPerYear.div(percentageCTokenStaked)
-    console.log(`expect canto per year ${expectedAmount}`)
-
     const percentageLPStaked = LPTokenStakedAmount.div(LPTokenTotalSupply)
-    console.log(`canto staked ${WCANTO_IN_LP.times(percentageLPStaked).times(2).div(1e18).toString()}`)
-
-    console.log(`apy ${expectedAmount.div(WCANTO_IN_LP).times(percentageLPStaked).div(2).div(100).toString()}`)
-
-
-
-    if(!CTokenStakedBalance && !WCANTO_IN_LP) return new BigNumber(0)
 
     const apy = cantoPerYear
                     .times(percentageCTokenStaked)
@@ -185,30 +173,18 @@ const GetAPY = () => {
                     .times(percentageLPStaked)
                     .times(1e18)
     
-    console.log(`apy result ${apy}`)
+    useEffect(() => {
+      setApyNumber(true)
+      
+    }, [apyNumber, apy]);
 
-    if(apy == undefined) return new BigNumber(0)
-
-    return apy
+    return apyNumber? apy : BigNumber(0)
     
 }
 
 function FarmCard() {
-    const [harvestable, setHarvestable] = useState(0)
-
-    const { address: userAddress } = useAccount();
-    
-    useEffect(() => {
-        async function FetchEarned() {
-          const earned = usePendingMotorChefRewards()
-          setHarvestable(bnToDec(earned))
-        if (userAddress) {
-          FetchEarned()
-        }}
-    }, [userAddress, setHarvestable])
     
     const apy = GetAPY()
-
 
     return (
         <StyledCardWrapper>
@@ -232,7 +208,7 @@ function FarmCard() {
                         <StyledInsight>
                             <Text>
                                 APY</Text>
-                            <Text>{apy != BigNumber(0)? `${apy
+                            <Text>{apy != BigNumber(0)? `${apy!
                                     .times(new BigNumber(100))
                                     .toNumber()
                                     .toLocaleString('en-US')
