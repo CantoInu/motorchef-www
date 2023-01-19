@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction, useCallback, useMemo, useState } from "react"
+import { Dispatch, ReactElement, SetStateAction, useCallback, useEffect, useMemo, useState } from "react"
 
 import styled from "styled-components"
 import { Flex, GreenButton, Text } from "../../styles"
@@ -148,6 +148,7 @@ export function WithdrawModal({
 	const max = useStakedBalance().amount
 
 	const [val, setVal] = useState('')
+	const [successs, setSuccess] = useState<boolean>()
 
 	const fullBalance = useMemo(() => {
 		return max!
@@ -180,6 +181,12 @@ export function WithdrawModal({
     const { isLoading, isSuccess } = useWaitForTransaction({
         hash: data?.hash,
     })
+
+	const handleWrite = useEffect(() => {
+		setSuccess(isSuccess)
+		if(isSuccess) setModalOpen(false)
+	}, [isSuccess, setSuccess, setModalOpen])
+
 
 	if (!modalOpen) return null
 
