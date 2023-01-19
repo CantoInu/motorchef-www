@@ -36,7 +36,7 @@ export const HarvestButton = () => {
 
     return (
       <StyledButtonContent>
-        <GreenButton disabled={!write || isLoading} onClick={() => write()}>
+        <GreenButton disabled={!write || isLoading} onClick={() => write!()}>
           <Text
             fontWeight={700}
             fontSize={16}
