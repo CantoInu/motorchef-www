@@ -212,7 +212,7 @@ function FarmCard() {
                                     .times(new BigNumber(100))
                                     .toNumber()
                                     .toLocaleString('en-US')
-                                    .slice(0, -1)}%`
+                                    }%`
                                 : 'Loading ...'}
                             </Text>
                         </StyledInsight>
