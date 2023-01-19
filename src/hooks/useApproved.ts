@@ -21,7 +21,7 @@ export function useNeedsLPApproval() {
 
     if(!userApproved || !userBalance) return true
 
-    if(userApproved!.gte(userBalance!.value!)) {
+    if(userApproved!.gte(userBalance!.value!) && userApproved!.gt(0)) {
         return false
     }
 
