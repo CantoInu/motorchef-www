@@ -102,7 +102,7 @@ const StakingButton = () => {
         />
       <StyledButtonContent>
         <StyledCardActions>
-          <GreenButton disabled={ false } onClick={() => setWithdrawModalOpen(true)}>
+          <GreenButton disabled={ false } onClick={() => { isStaked! ? setWithdrawModalOpen(true) : setDepositModalOpen(true)}}>
             <Text
               fontWeight={700}
               fontSize={16}
