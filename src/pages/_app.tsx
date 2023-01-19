@@ -1,6 +1,6 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
-import { NETWORK_RPC_URL } from "../utils/env-vars"
+import { NETWORK_RPC_URL } from "utils/env-vars"
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { Chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { publicProvider } from "wagmi/providers/public"
