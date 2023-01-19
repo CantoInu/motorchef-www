@@ -23,8 +23,8 @@ export default function Home() {
         <Spacer size="xl" />
         <PageHeader
           icon={<Image src={icon} height={240} width={240} alt="WOOF" />}
-          title="MotorChef is (almost) Ready"
-          subtitle="Stake Canto Native DEX LP tokens to farm your share of WCANTO!"
+          title="MotorChef is Ready"
+          subtitle="Stake Canto Native DEX LP tokens to farm your share of CANTO!"
         />
         <Container>
           <Balances/>

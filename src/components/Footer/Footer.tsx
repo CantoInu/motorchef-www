@@ -1,5 +1,7 @@
+import { Spacer } from 'components/Spacer'
 import React from 'react'
 import styled from 'styled-components'
+import { Text } from 'styles'
 
 import {Nav} from './components/Nav'
 
@@ -17,13 +19,27 @@ const StyledFooterInner = styled.div`
   width: 100%;
 `
 
+const StyledWarning = styled.footer`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - ${(props) => props.theme.topBarSize * 2}px);
+`
+
 export function Footer() {
   return(
-    <StyledFooter>
-      <StyledFooterInner>
-        <Nav />
-      </StyledFooterInner>
-    </StyledFooter>
+    <>
+      <StyledWarning>
+        <Text>⚠️ This site links to contracts which have not been auditting and could contain bugs🪲 which could result in a loss of funds. ⚠️</Text>
+        <Text>⚠️ By interacting with this site you agree to accept this risk. ⚠️</Text>
+      </StyledWarning>
+      <Spacer size="xl" />
+      <StyledFooter>
+        <StyledFooterInner>
+          <Nav />
+        </StyledFooterInner>
+      </StyledFooter>
+    </>
   )
 }
 

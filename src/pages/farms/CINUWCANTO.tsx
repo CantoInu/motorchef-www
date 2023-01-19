@@ -57,7 +57,7 @@ export default function CINUWCANTO() {
 		<PageHeader
 			icon={<DogIcon size={100}/>}
 			title="Canto&apos;s Best Friend!"
-			subtitle="Deposit vAMM CINU/WCANTO LP Tokens and earn WCANTO"
+			subtitle="Deposit vAMM CINU/CANTO LP Tokens and earn WANTO"
 		/>
 		<StyledCardsWrapper>
 		  <StyledCardWrapper>
@@ -79,7 +79,7 @@ export default function CINUWCANTO() {
 				textDecoration="none"
 				fontSize={16}
 				fontWeight={400}>
-				⭐️ Every time you stake and unstake LP tokens, the contract will automagically harvest WCANTO rewards for you!
+				⭐️ Every time you stake and unstake LP tokens, the contract will automagically harvest CANTO rewards for you!
 			</Text>
 			<Spacer size="xl" />
 		</div>
