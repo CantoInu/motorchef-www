@@ -46,6 +46,13 @@ const StyledBalance = styled.div`
   flex: 1;
 `
 
+const StyledCardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: ${(props) => props.theme.spacing[3]}px;
+`
+
 const PendingRewards = (): ReactElement => {
   const [pending, setPending] = useState(false);
   const pendingAmount = usePendingMotorChefRewards()

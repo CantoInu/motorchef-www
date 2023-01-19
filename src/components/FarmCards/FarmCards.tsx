@@ -147,6 +147,13 @@ const StyledCardAccent = styled.div`
   z-index: 0;
 `
 
+const StyledCardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: ${(props) => props.theme.spacing[3]}px;
+`
+
 const GetAPY = () => {
   const [apyNumber, setApyNumber] = useState(false)
 
@@ -187,7 +194,7 @@ function FarmCard() {
         <StyledCardWrapper>
             <StyledCardAccent/>
             <Card>
-                <CardContent>
+                <StyledCardContent>
                     <StyledContent>
                         <StyledCardIcon>🐕</StyledCardIcon>
                         <StyledTitle>Canto&apos;s Best Friend</StyledTitle>
@@ -217,7 +224,7 @@ function FarmCard() {
                             </Text>
                         </StyledInsight>
                     </StyledContent>
-                </CardContent>
+                </StyledCardContent>
             </Card>
         </StyledCardWrapper>
     )

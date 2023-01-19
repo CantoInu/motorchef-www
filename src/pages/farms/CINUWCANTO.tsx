@@ -9,18 +9,14 @@ import { DogIcon } from 'components/Icons';
 import styled from "styled-components";
 import { Stake } from "components/Stake";
 
-
-const StyledFarm = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+const StyledCardSpacer = styled.div`
+  padding: 30px;
+  
 `
 
 const StyledCardsWrapper = styled.div`
   display: flex;
+  align-items: center;
   width: 600px;
   @media (max-width: 768px) {
     width: 100%;

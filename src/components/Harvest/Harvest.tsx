@@ -101,6 +101,13 @@ const StyledCardIcon = styled.div`
   margin: 0 auto ${props => props.theme.spacing[3]}px;
 `
 
+const StyledCardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: ${(props) => props.theme.spacing[3]}px;
+`
+
 const PendingRewards = (): ReactElement => {
   const [pending, setPending] = useState(false);
   const pendingAmount = usePendingMotorChefRewards()
@@ -133,7 +140,7 @@ function HarvestCard() {
     return (
         <StyledCardWrapper>
             <Card>
-              <CardContent>
+              <StyledCardContent>
                 <StyledContent>
                   <StyledCardIcon>🟩⛓️&nbsp;&nbsp;</StyledCardIcon>
                     <PendingRewards/>
@@ -143,7 +150,7 @@ function HarvestCard() {
                   <StyledSpacer/>
                   <HarvestButton/>
                 </StyledContent>
-              </CardContent>
+              </StyledCardContent>
             </Card>
         </StyledCardWrapper>
     )

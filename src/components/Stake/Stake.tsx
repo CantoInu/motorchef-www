@@ -8,6 +8,7 @@ import { Card } from 'components/Card'
 import { CardContent } from 'components/CardContent'
 
 import { StakeButton } from './StakeButton'
+import { Spacer } from 'components/Spacer'
 
 
 
@@ -99,6 +100,13 @@ const StyledCardIcon = styled.div`
   margin: 0 auto ${props => props.theme.spacing[3]}px;
 `
 
+const StyledCardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: ${(props) => props.theme.spacing[3]}px;
+`
+
 const StakedAmount = (): ReactElement => {
   const [staked, setStaked] = useState(false);
   const stakedAmount = useStakedBalance()
@@ -131,17 +139,18 @@ function StakeCard() {
     return (
         <StyledCardWrapper>
             <Card>
-              <CardContent>
+              <StyledCardContent>
                 <StyledContent>
                   <StyledCardIcon>🐕</StyledCardIcon>
                     <StakedAmount/>
                   <StyledDetails>
                     <StyledDetail>vAMM CINU/WCANTO LP Tokens Staked</StyledDetail>
                   </StyledDetails>
-                  <StyledSpacer/>
+                  <Spacer/>
+                  <Spacer/>
                   <StakeButton/>
                 </StyledContent>
-              </CardContent>
+              </StyledCardContent>
             </Card>
         </StyledCardWrapper>
     )

@@ -9,7 +9,7 @@ export function CardContent({ children }: ReactChildren) {
 const StyledCardContent = styled.div`
   display: flex;
   flex: 1;
-  width: 350px;
+  width: 370px;
   flex-direction: column;
   padding: ${(props) => props.theme.spacing[3]}px;
 `
