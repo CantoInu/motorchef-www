@@ -130,11 +130,11 @@ export const StakeButton = () => {
 
   useEffect(() => {
     setApprove(isApproved)
-  }, [ approve ])
+  }, [ approve, isApproved ])
     
   return (
     <>
-        {setApprove! 
+        {isApproved! 
           ? <StakingButton/>
           : <ApproveLPButton/>}
     </>

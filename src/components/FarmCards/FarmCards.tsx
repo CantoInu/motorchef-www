@@ -165,7 +165,6 @@ const GetAPY = () => {
     const percentageCTokenStaked = CTokenStakedBalance.div(CTokenTotalSupply)
     const percentageLPStaked = LPTokenStakedAmount.div(LPTokenTotalSupply)
     const wcantoInStakedLP = WCANTO_IN_LP!.times(percentageLPStaked).times(2)
-    console.log(wcantoInStakedLP.div(1e18).toString())
 
     const apy = cantoPerYear
                     .times(percentageCTokenStaked)
