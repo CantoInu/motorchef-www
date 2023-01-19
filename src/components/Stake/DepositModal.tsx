@@ -116,7 +116,10 @@ value,
 }: TokenInputProps): ReactElement => {
 return (
 	<StyledTokenInput>
-	<StyledMaxText>{max.toLocaleString()} {symbol} Available</StyledMaxText>
+	<StyledMaxText>{max! == "0"
+		? 'You have no LP tokens available, please pool your CINU and CANTO at Leetswap first'
+		: `${max.toLocaleString()} ${symbol} Available`
+		}</StyledMaxText>
 	<Input
 		endAdornment={(
 		<StyledTokenAdornmentWrapper>
