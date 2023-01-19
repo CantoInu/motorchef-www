@@ -8,6 +8,7 @@ import { Card } from 'components/Card'
 import { CardContent } from 'components/CardContent'
 
 import { HarvestButton } from './HarvestButton'
+import { useAuth } from 'hooks'
 
 
 
@@ -111,9 +112,12 @@ const StyledCardContent = styled.div`
 const PendingRewards = (): ReactElement => {
   const [pending, setPending] = useState(false);
   const pendingAmount = usePendingMotorChefRewards()
+  const { address: connectedAddress = "" } = useAuth()
 
   useEffect(() => {
-    setPending(true)
+    if(pendingAmount!) {
+      setPending(true)
+    }
     
   }, [pending, pendingAmount]);
 
@@ -128,7 +132,7 @@ const PendingRewards = (): ReactElement => {
         fontSize: 40
       }}
     >
-    {!!pending ? formatCryptoVal(pendingAmount!) : 'Locked'}
+    {((connectedAddress || !setPending) && !!pendingAmount) ? formatCryptoVal(pendingAmount!) : 'Locked'}
     </span>
   )
 }

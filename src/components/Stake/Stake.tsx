@@ -9,6 +9,7 @@ import { CardContent } from 'components/CardContent'
 
 import { StakeButton } from './StakeButton'
 import { Spacer } from 'components/Spacer'
+import { useAuth } from 'hooks'
 
 
 
@@ -110,6 +111,7 @@ const StyledCardContent = styled.div`
 const StakedAmount = (): ReactElement => {
   const [staked, setStaked] = useState(false);
   const stakedAmount = useStakedBalance()
+  const { address: connectedAddress = "" } = useAuth()
 
   useEffect(() => {
     setStaked(true)
@@ -127,7 +129,7 @@ const StakedAmount = (): ReactElement => {
         fontSize: 40
       }}
     >
-    {!!staked ? formatCryptoVal(stakedAmount?.amount!) : 'Locked'}
+    {((connectedAddress || !setStaked) && !!stakedAmount.amount) ? formatCryptoVal(stakedAmount?.amount!) : 'Locked'}
     </span>
   )
 }

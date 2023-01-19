@@ -8,7 +8,7 @@ import {
 import { MOTORCHEF, CINU_WCANTO_LP_PAIR, PID } from 'utils/env-vars';
 import { GreenButton, Text } from 'styles'
 import styled from 'styled-components';
-import {useNeedsLPApproval, useStakedBalance} from 'hooks';
+import {useAuth, useNeedsLPApproval, useStakedBalance} from 'hooks';
 import { MaxUint256 } from '@ethersproject/constants'
 import AddButton from 'components/AddButton/AddButton';
 import { DepositModal } from './DepositModal';
@@ -82,6 +82,7 @@ const StakingButton = () => {
   const [ depositModalOpen, setDepositModalOpen ] = useState(false)
   const [ withdrawModalOpen, setWithdrawModalOpen ] = useState(false)
   const [ staking, setStaking ] = useState<boolean>()
+  const { address: connectedAddress = "" } = useAuth()
 
   const isStaked = useStakedBalance()?.amount != "0" ? true : false
 
@@ -101,18 +102,18 @@ const StakingButton = () => {
         />
       <StyledButtonContent>
         <StyledCardActions>
-          <GreenButton disabled={ !isStaked } onClick={() => setWithdrawModalOpen(true)}>
+          <GreenButton disabled={ !isStaked || !connectedAddress } onClick={() => setWithdrawModalOpen(true)}>
             <Text
               fontWeight={700}
               fontSize={16}
             >
-              {setStaking! ? 'Unstake' : 'Stake'}
+              {!setStaking! ? 'Unstake' : 'Stake'}
             </Text>
           </GreenButton> 
-          {setStaking!
+          {!setStaking!
             ? <>
                 <StyledActionSpacer/>
-                <AddButton disabled={false} onClick={() => setDepositModalOpen(true)}/>
+                <AddButton disabled={false || !connectedAddress} onClick={() => setDepositModalOpen(true)}/>
                 </>
             : <></>}
         </StyledCardActions>
@@ -134,7 +135,7 @@ export const StakeButton = () => {
     
   return (
     <>
-        {isApproved! 
+        {(isApproved! || setApprove)
           ? <StakingButton/>
           : <ApproveLPButton/>}
     </>
