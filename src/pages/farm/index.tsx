@@ -24,7 +24,7 @@ export default function Farm() {
             </div>
           }
           title="So farming, much Free Public Infrastructure"
-          subtitle="Deposit CINU/CANTO LP Tokens and earn CANTO"
+          subtitle="Deposit CINU/CANTO LP Tokens and earn WCANTO"
         />
         <FarmCards/>
         <Spacer size="xl" />
