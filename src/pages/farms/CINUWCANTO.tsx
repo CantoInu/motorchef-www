@@ -46,7 +46,7 @@ const StyledInfo = styled.h3`
 export default function CINUWCANTO() {
 	return (
 	<>
-		<Seo title='Farms | CINU-WCANTO'/>
+		<Seo title='Farms | CINU-CANTO'/>
 		<TopBar/>
 		<Page>
 		<Spacer size="xl" />

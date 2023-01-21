@@ -146,7 +146,7 @@ function StakeCard() {
                   <StyledCardIcon>🐕</StyledCardIcon>
                     <StakedAmount/>
                   <StyledDetails>
-                    <StyledDetail>vAMM CINU/WCANTO LP Tokens Staked</StyledDetail>
+                    <StyledDetail>vAMM CINU/CANTO LP Tokens Staked</StyledDetail>
                   </StyledDetails>
                   <Spacer/>
                   <Spacer/>
