@@ -53,7 +53,7 @@ export default function CINUWCANTO() {
 		<PageHeader
 			icon={<DogIcon size={100}/>}
 			title="Canto&apos;s Best Friend!"
-			subtitle="Deposit vAMM CINU/CANTO LP Tokens and earn WANTO"
+			subtitle="Deposit vAMM CINU/CANTO LP Tokens and earn WCANTO"
 		/>
 		<StyledCardsWrapper>
 		  <StyledCardWrapper>

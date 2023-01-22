@@ -30,7 +30,7 @@ export function Footer() {
   return(
     <>
       <StyledWarning>
-        <Text>⚠️ This site links to experimental contracts which have not been audited and could contain bugs🪲 which could result in a loss of funds 💸. ⚠️</Text>
+        <Text>⚠️ This site links to experimental contracts which have not been audited and could contain bugs🐞 which could result in a loss of funds 💸. ⚠️</Text>
         <Text>⚠️ By interacting with this site you agree to accept this risk. ⚠️</Text>
       </StyledWarning>
       <Spacer size="xl" />
