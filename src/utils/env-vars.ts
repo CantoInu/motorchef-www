@@ -26,5 +26,6 @@ export const CINU_WCANTO_LP_PAIR = process.env.NEXT_PUBLIC_CINU_WCANTO_LP_PAIR |
 export const MOTORCHEF = process.env.NEXT_PUBLIC_MOTORCHEF || ""
 export const COMPTROLLER = process.env.NEXT_PUBLIC_COMPTROLLER || "" 
 export const CCANTO_NOTE = process.env.NEXT_PUBLIC_CCANTO_NOTE || ""
+export const DOGBURNER = process.env.NEXT_PUBLIC_DOGBURNER || ""
 export const PID = process.env.NEXT_PUBLIC_POOL_ID || 0
 // TODO: throw error for uninitialized required vars

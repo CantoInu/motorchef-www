@@ -65,6 +65,15 @@ export function TopBar({ children }: ReactChildren) {
             </Text>
 					</PassLink>
 				</>)}
+        {widerThanSmall && (
+          <PassLink href="/burn">
+            <Text 
+              fontWeight={700}
+              as="a">
+              Burn
+            </Text>
+          </PassLink>
+				)}
 				{widerThanSmall && (
           <PassLink href="/farm">
             <Text 
