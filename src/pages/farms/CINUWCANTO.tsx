@@ -46,14 +46,14 @@ const StyledInfo = styled.h3`
 export default function CINUWCANTO() {
 	return (
 	<>
-		<Seo title='Farms | CINU-WCANTO'/>
+		<Seo title='Farms | CINU-CANTO'/>
 		<TopBar/>
 		<Page>
 		<Spacer size="xl" />
 		<PageHeader
 			icon={<DogIcon size={100}/>}
 			title="Canto&apos;s Best Friend!"
-			subtitle="Deposit vAMM CINU/CANTO LP Tokens and earn WANTO"
+			subtitle="Deposit vAMM CINU/CANTO LP Tokens and earn WCANTO"
 		/>
 		<StyledCardsWrapper>
 		  <StyledCardWrapper>
