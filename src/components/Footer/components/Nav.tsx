@@ -21,13 +21,13 @@ export function Nav() {
     <StyledNav>
       <StyledLink
         target="_blank"
-        href="https://evm.explorer.canto.io/address/0xae2BF8e822C5f92d8E5F9aD3225C8F815893BB32/contracts#address-tabs"
+        href="https://tuber.build/address/0xae2BF8e822C5f92d8E5F9aD3225C8F815893BB32/contracts#address-tabs"
       >
         MotorChef Contract
       </StyledLink>
       <StyledLink
         target="_blank"
-        href="https://app.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO"
+        href="https://v1.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO"
       >
         Leetswap
       </StyledLink>

@@ -34,7 +34,7 @@ export default function Burn() {
               fontWeight={400}>
               Send CANTO to
           </Text>
-          <PassLink href="https://evm.explorer.canto.io/address/0xDE7Aa2B085bef0d752AA61058837827247Cc5253">
+          <PassLink href="https://tuber.build/address/0xDE7Aa2B085bef0d752AA61058837827247Cc5253">
             <Text
                 as="a"
                 fontSize={16}

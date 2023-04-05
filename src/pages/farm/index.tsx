@@ -40,7 +40,7 @@ export default function Farm() {
               fontWeight={400}>
               Make sure to head over to&nbsp; 
           </Text>
-          <PassLink href="https://app.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO">
+          <PassLink href="https://v1.leetswap.finance/#/add/v2/0x7264610A66EcA758A8ce95CF11Ff5741E1fd0455/CANTO">
             <Text
                 as="a"
                 fontSize={16}

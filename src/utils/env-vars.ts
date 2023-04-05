@@ -14,7 +14,7 @@ export const TELEGRAM_URL = process.env.NEXT_PUBLIC_TELEGRAM
 export const APP_LOGO = `${BASE_URL}/icon.png`
 export const APP_LOGO_ALT = `${BASE_URL}/icon.png`
 
-export const BLOCK_EXPLORER_BASE_URL = process.env.NEXT_PUBLIC_BLOCK_EXPLORER_URL || "https://evm.explorer.canto.io/"
+export const BLOCK_EXPLORER_BASE_URL = process.env.NEXT_PUBLIC_BLOCK_EXPLORER_URL || "https://tuber.build/"
 
 export const NETWORK_RPC_URL = process.env.NEXT_PUBLIC_NETWORK_URL || "https://canto.slingshot.finance/"
 export const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID

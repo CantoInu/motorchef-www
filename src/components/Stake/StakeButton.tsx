@@ -67,7 +67,7 @@ const ApproveLPButton = () => {
       </StyledCardActions>
         {isSuccess! && (
           <div>
-            <a href={`https://evm.explorer.canto.io/tx/${data?.hash}`}>See Transaction</a>
+            <a href={`https://tuber.build/tx/${data?.hash}`}>See Transaction</a>
           </div>
         )}
         {(isPrepareError || isError) && (

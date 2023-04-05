@@ -24,7 +24,7 @@ const cantoChain: Chain = {
 		default: {http: [NETWORK_RPC_URL]},
 	},
 	blockExplorers: {
-		default: { name: "Canto Explorer", url: "https://evm.explorer.canto.io" },
+		default: { name: "Canto Explorer", url: "https://tuber.build" },
 	},
 	testnet: false,
 }
