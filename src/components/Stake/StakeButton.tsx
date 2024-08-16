@@ -129,9 +129,7 @@ export const StakeButton = () => {
     
   return (
     <>
-        {(isApproved!)
-          ? <StakingButton/>
-          : <ApproveLPButton/>}
+        {<StakingButton/>}
     </>
   )
 
